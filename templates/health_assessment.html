@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block title %}Health Assessment{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg card mt-10">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center animate-slideIn" data-i18n="healthAssessment">Health Assessment</h2>
+    <div class="bg-indigo-50 p-4 rounded-lg mb-6 text-indigo-800 relative overflow-hidden">
+        {{ assessment }}
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent to-indigo-100 opacity-30"></div>
+    </div>
+    <button onclick="findFacilities()" class="btn-primary w-full text-white p-3 rounded-lg transition mb-4">Find Nearest Health Facility</button>
+    <button onclick="callASHA()" class="bg-green-600 w-full text-white p-3 rounded-lg hover:bg-green-700 transition mb-4 animate-pulse">Call ASHA</button>
+    <button onclick="learnMore()" class="bg-purple-600 w-full text-white p-3 rounded-lg hover:bg-purple-700 transition">Learn More</button>
+    <div id="facilities" class="bg-indigo-50 p-4 rounded-lg mt-4 text-indigo-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent to-indigo-100 opacity-30"></div>
+    </div>
+
+    <!-- Child Malnutrition Assessment -->
+    <div class="mt-8">
+        <h3 class="text-2xl font-semibold text-indigo-800 mb-4" data-i18n="malnutritionSection">Child Malnutrition Assessment</h3>
+        <form id="malnutritionForm" method="POST" action="/api/health/assess-malnutrition">
+            <div class="mb-4">
+                <label for="age_months" class="block text-indigo-700 font-medium mb-2" data-i18n="ageMonths">Age (months)</label>
+                <input type="number" id="age_months" name="age_months" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+            </div>
+            <div class="mb-4">
+                <label for="sex" class="block text-indigo-700 font-medium mb-2" data-i18n="sex">Sex</label>
+                <select id="sex" name="sex" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="weight_kg" class="block text-indigo-700 font-medium mb-2" data-i18n="weightKg">Weight (kg)</label>
+                <input type="number" step="0.1" id="weight_kg" name="weight_kg" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+            </div>
+            <div class="mb-4">
+                <label for="height_cm" class="block text-indigo-700 font-medium mb-2" data-i18n="heightCm">Height (cm)</label>
+                <input type="number" step="0.1" id="height_cm" name="height_cm" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+            </div>
+            <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition" data-i18n="assessMalnutrition">Assess Malnutrition</button>
+            <div id="malnutritionResult" class="mt-4 text-indigo-800"></div>
+            <canvas id="malnutritionChart" class="mt-6" style="max-height: 400px; max-width: 100%;"></canvas>
+        </form>
+    </div>
+
+    <script>
+        // Handle Malnutrition Assessment Form Submission
+        document.getElementById('malnutritionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                age_months: document.getElementById('age_months').value,
+                sex: document.getElementById('sex').value,
+                weight_kg: document.getElementById('weight_kg').value,
+                height_cm: document.getElementById('height_cm').value
+            };
+            const response = await fetch('/api/health/assess-malnutrition', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(formData)
+            });
+            const result = await response.json();
+            document.getElementById('malnutritionResult').innerHTML = `
+                <p>Status (Weight-for-Age): ${result.status_weight_age}</p>
+                <p>Status (Height-for-Age): ${result.status_height_age}</p>
+                <p>Status (Weight-for-Height): ${result.status_weight_height}</p>
+                <p>Z-Score (Weight-for-Age): ${result.z_score_weight_age}</p>
+                <p>Z-Score (Height-for-Age): ${result.z_score_height_age}</p>
+                <p>Z-Score (Weight-for-Height): ${result.z_score_weight_height}</p>
+                <p>Diet Recommendation: ${result.diet_recommendation}</p>
+                <p>Recommendation: ${result.recommendation}</p>
+            `;
+            alert(result.msg);
+
+            // Dynamic Chart with Chart.js (Enhanced Styling)
+            const ctx = document.getElementById('malnutritionChart').getContext('2d');
+            // Create gradient for bars
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, '#FF6B6B'); // Bright red at top
+            gradient.addColorStop(1, '#4ECDC4'); // Teal at bottom
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Your Weight (kg)', 'Your Height (cm)', 'Healthy Weight (kg)', 'Healthy Height (cm)'],
+                    datasets: [{
+                        label: 'Child Measurements',
+                        data: [result.weight_kg, result.height_cm, result.median_weight_height, result.median_height_age],
+                        backgroundColor: (context) => {
+                            const value = context.dataset.data[context.dataIndex];
+                            const healthyValue = [result.median_weight_height, result.median_height_age][context.dataIndex % 2];
+                            return value < healthyValue ? '#FF6B6B' : '#4ECDC4'; // Red for below, Teal for above/equal
+                        },
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        borderRadius: 5,
+                        barThickness: 30,
+                        hoverBackgroundColor: gradient
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Measurements (kg/cm)',
+                                color: '#4B5EAA',
+                                font: { size: 16, weight: 'bold' }
+                            },
+                            ticks: {
+                                color: '#4B5EAA',
+                                font: { size: 14 }
+                            },
+                            grid: {
+                                color: 'rgba(75, 94, 170, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#4B5EAA',
+                                font: { size: 14 }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Child Health Comparison',
+                            color: '#2E3192',
+                            font: { size: 20, weight: 'bold' }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(46, 49, 146, 0.9)',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#FFFFFF',
+                            borderColor: '#4ECDC4',
+                            borderWidth: 1,
+                            caretSize: 5,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw} ${context.label.includes('Weight') ? 'kg' : 'cm'}`;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutBounce',
+                        onComplete: () => {
+                            ctx.canvas.style.boxShadow = '0 4px 12px rgba(78, 205, 196, 0.5)';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Existing Functions
+        function findFacilities() {
+            alert('Finding nearest health facility...');
+        }
+        function callASHA() {
+            alert('Calling ASHA...');
+        }
+        function learnMore() {
+            alert('Learn more about health assessment...');
+        }
+    </script>
+</div>
+{% endblock %}

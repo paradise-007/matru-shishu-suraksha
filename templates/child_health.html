@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% block title %}Child Health{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="childHealth">Child Health</h2>
+    <p class="text-indigo-600 mb-4 text-center">Track your child's health and ensure proper care with these guidelines based on India's Universal Immunization Programme and WHO recommendations.</p>
+
+    <form method="POST">
+        <!-- Vaccination Section -->
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Vaccines Received <span class="text-xs text-gray-500">(e.g., BCG at birth, DPT at 6 weeks)</span></label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="BCG" class="mr-2">BCG (Birth)</label>
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="OPV0" class="mr-2">OPV 0 (Birth)</label>
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="HepB0" class="mr-2">Hepatitis B 0 (Birth)</label>
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="DPT1" class="mr-2">DPT 1 (6 weeks)</label>
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="OPV1" class="mr-2">OPV 1 (6 weeks)</label>
+                <label class="flex items-center"><input type="checkbox" name="vaccines" value="Hib1" class="mr-2">Hib 1 (6 weeks)</label>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Note: Consult your ASHA worker or visit a health center for the full schedule.</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="lastVaccine" class="block text-indigo-700 font-medium mb-2">Last Vaccine Date</label>
+            <input type="date" id="lastVaccine" name="lastVaccine" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+            <p class="text-xs text-gray-500 mt-2">Keep your child’s vaccination card updated at every visit.</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="vaccineSource" class="block text-indigo-700 font-medium mb-2">Vaccine Source</label>
+            <select id="vaccineSource" name="vaccineSource" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select Source</option>
+                <option value="Public">Public (Free at Govt. Centers)</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+
+        <!-- Nutrition Section -->
+        <div class="mb-4">
+            <label for="bfStatus" class="block text-indigo-700 font-medium mb-2">Breastfeeding Status <span class="text-xs text-gray-500">(Exclusive for 6 months recommended)</span></label>
+            <select id="bfStatus" name="bfStatus" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select Status</option>
+                <option value="Exclusive">Exclusive</option>
+                <option value="Partial">Partial</option>
+                <option value="Stopped">Stopped</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="bfInitiation" class="block text-indigo-700 font-medium mb-2">Breastfeeding Initiated within 1 Hour</label>
+            <select id="bfInitiation" name="bfInitiation" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <p class="text-xs text-gray-500 mt-2">Early initiation boosts immunity—consult a lactation specialist if needed.</p>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Foods Given <span class="text-xs text-gray-500">(Introduce solids after 6 months)</span></label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="foods" value="Breastmilk" class="mr-2">Breastmilk</label>
+                <label class="flex items-center"><input type="checkbox" name="foods" value="MashedDal" class="mr-2">Mashed Dal</label>
+                <label class="flex items-center"><input type="checkbox" name="foods" value="Vegetables" class="mr-2">Vegetables</label>
+                <label class="flex items-center"><input type="checkbox" name="foods" value="Fruits" class="mr-2">Fruits</label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="vitaminA" class="block text-indigo-700 font-medium mb-2">Vitamin A Given <span class="text-xs text-gray-500">(Every 6 months after 9 months)</span></label>
+            <select id="vitaminA" name="vitaminA" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <!-- Health Monitoring -->
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Recent Illnesses</label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="illnesses" value="Diarrhoea" class="mr-2">Diarrhoea</label>
+                <label class="flex items-center"><input type="checkbox" name="illnesses" value="Fever" class="mr-2">Fever</label>
+                <label class="flex items-center"><input type="checkbox" name="illnesses" value="Cough" class="mr-2">Cough</label>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Seek medical help if symptoms persist for over 2 days.</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="weight" class="block text-indigo-700 font-medium mb-2">Weight (kg) <span class="text-xs text-gray-500">(Track monthly)</span></label>
+            <input type="number" id="weight" name="weight" placeholder="Weight (kg)" step="0.1" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="height" class="block text-indigo-700 font-medium mb-2">Height (cm) <span class="text-xs text-gray-500">(Measure every 3 months)</span></label>
+            <input type="number" id="height" name="height" placeholder="Height (cm)" step="0.1" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Malnutrition Signs</label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="malnutritionSigns" value="Thinness" class="mr-2">Thinness</label>
+                <label class="flex items-center"><input type="checkbox" name="malnutritionSigns" value="Swelling" class="mr-2">Swelling</label>
+                <label class="flex items-center"><input type="checkbox" name="malnutritionSigns" value="Lethargy" class="mr-2">Lethargy</label>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Visit an Anganwadi center or doctor if signs are observed.</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="anganwadiDistance" class="block text-indigo-700 font-medium mb-2">Distance to Anganwadi (km) <span class="text-xs text-gray-500">(For growth monitoring)</span></label>
+            <input type="number" id="anganwadiDistance" name="anganwadiDistance" placeholder="Distance (km)" step="0.1" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+        </div>
+
+        <div class="mb-6">
+            <label for="healthWorker" class="block text-indigo-700 font-medium mb-2">Visited by Health Worker <span class="text-xs text-gray-500">(e.g., ASHA worker)</span></label>
+            <select id="healthWorker" name="healthWorker" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition">Save</button>
+    </form>
+    <div class="mt-6">
+        <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Vaccination Compliance</h3>
+        <div id="vaccineProgress" class="w-full bg-gray-200 rounded-full h-6 mb-2">
+            <div id="vaccineBar" class="bg-green-600 h-6 rounded-full text-center text-white" style="width: 0%;">0%</div>
+        </div>
+        <p id="vaccineInsight" class="text-indigo-600"></p>
+    </div>
+    <div class="mt-6">
+        <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Growth Chart</h3>
+        <canvas id="growthChart" style="max-height: 300px;"></canvas>
+        <p id="growthInsight" class="text-indigo-600 mt-2"></p>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            const vaccines = data.vaccines ? (Array.isArray(data.vaccines) ? data.vaccines : [data.vaccines]) : [];
+            const progress = (vaccines.length / 6) * 100; // Assuming 6 key vaccines
+            document.getElementById('vaccineBar').style.width = `${progress}%`;
+            document.getElementById('vaccineBar').textContent = `${Math.round(progress)}%`;
+            document.getElementById('vaccineInsight').textContent = `Your child has received ${vaccines.length} of 6 key vaccines. Schedule the next visit!`;
+    
+            // Submit to original route
+            const formResponse = await fetch('/child_health', {
+                method: 'POST',
+                body: formData
+            });
+            if (formResponse.ok) {
+                // Trigger alert endpoint
+                const alertResponse = await fetch('/child_health_alert', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await alertResponse.json();
+                if (result.msg) alert(result.msg);
+            }
+    
+            // Growth Chart Logic (unchanged)
+            let growthData = JSON.parse(localStorage.getItem('growthData') || '[]');
+            growthData.push({ date: new Date().toISOString().split('T')[0], weight: data.weight, height: data.height });
+            localStorage.setItem('growthData', JSON.stringify(growthData));
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: growthData.map(d => d.date),
+                    datasets: [{
+                        label: 'Weight (kg)',
+                        data: growthData.map(d => d.weight),
+                        borderColor: '#FF6B6B',
+                        fill: false
+                    }, {
+                        label: 'Height (cm)',
+                        data: growthData.map(d => d.height),
+                        borderColor: '#4ECDC4',
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Value' } } },
+                    plugins: { title: { display: true, text: 'Growth Over Time', color: '#2E3192' } }
+                }
+            });
+            document.getElementById('growthInsight').textContent = data.malnutritionSigns ? 'Warning: Signs of malnutrition detected. Seek help.' : 'Growth appears normal.';
+        });
+    </script>
+    <!-- Additional Resources -->
+    <div class="mt-6 text-center">
+        <p class="text-indigo-600">Need more help? Check these resources:</p>
+        <ul class="text-sm text-indigo-700 list-disc list-inside">
+            <li><a href="#" onclick="alert('Contact your local ASHA worker for support.'); return false;" class="underline">Contact ASHA Worker</a></li>
+            <li><a href="#" onclick="alert('Visit https://nhm.gov.in for immunization schedules.'); return false;" class="underline">Immunization Schedule</a></li>
+            <li><a href="#" onclick="alert('Learn about nutrition at https://icds-wcd.nic.in.'); return false;" class="underline">Nutrition Guidelines</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

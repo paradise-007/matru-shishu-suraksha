@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}Caregiver Setup{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="caregiverSetup">Caregiver Setup</h2>
+    <p class="text-indigo-600 mb-4 text-center">Set up your profile to manage child care duties effectively. Use this to track responsibilities and access support.</p>
+
+    <form method="POST" id="caregiverForm">
+        <!-- Relation to Child -->
+        <div class="mb-4">
+            <label for="relation" class="block text-indigo-700 font-medium mb-2">Relation to Child <span class="text-xs text-gray-500">(e.g., primary caregiver)</span></label>
+            <select id="relation" name="relation" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select Relation</option>
+                <option value="Husband">Husband</option>
+                <option value="Grandmother">Grandmother</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Number of Dependents -->
+        <div class="mb-4">
+            <label for="numDependents" class="block text-indigo-700 font-medium mb-2">Number of Dependents <span class="text-xs text-gray-500">(Children under care)</span></label>
+            <input type="number" id="numDependents" name="numDependents" placeholder="Number of dependents" min="1" required class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+
+        <!-- Primary Responsibilities -->
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Primary Responsibilities <span class="text-xs text-gray-500">(Select all that apply)</span></label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="responsibilities" value="Feeding" class="mr-2">Feeding</label>
+                <label class="flex items-center"><input type="checkbox" name="responsibilities" value="HealthCheckups" class="mr-2">Health Checkups</label>
+                <label class="flex items-center"><input type="checkbox" name="responsibilities" value="Vaccination" class="mr-2">Vaccination Follow-up</label>
+                <label class="flex items-center"><input type="checkbox" name="responsibilities" value="Education" class="mr-2">Education Support</label>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Tip: Coordinate with health workers for vaccination schedules.</p>
+        </div>
+
+        <!-- Contact for Support -->
+        <div class="mb-4">
+            <label for="supportContact" class="block text-indigo-700 font-medium mb-2">Emergency Contact Number <span class="text-xs text-gray-500">(e.g., ASHA worker or family)</span></label>
+            <input type="tel" id="supportContact" name="supportContact" placeholder="e.g., +919876543210" pattern="[0-9]{10,12}" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+
+        <!-- Nearby Facilities Button -->
+        <div class="mb-4 text-center">
+            <button type="button" onclick="findNearbyFacilities()" class="btn-secondary w-full text-white p-3 rounded-lg transition">Find Nearby Health Facilities</button>
+            <div id="facilities" class="bg-indigo-50 p-4 rounded-lg mt-2 text-indigo-800" style="display: none;"></div>
+        </div>
+
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition">Save</button>
+    </form>
+
+    <!-- Duty Checklist and Resources -->
+    <div class="mt-6 text-center">
+        <h3 class="text-lg font-semibold text-indigo-700 mb-2">Caregiver Duties Checklist</h3>
+        <ul class="text-sm text-indigo-600 list-disc list-inside mb-4">
+            <li>Ensure timely feeding with nutritious meals.</li>
+            <li>Schedule and attend health checkups monthly.</li>
+            <li>Follow up on vaccination dates with ASHA workers.</li>
+            <li>Monitor for signs of illness or malnutrition.</li>
+        </ul>
+        <p class="text-indigo-600">Need more help?</p>
+        <ul class="text-sm text-indigo-700 list-disc list-inside">
+            <li><a href="#" onclick="alert('Contact your local ASHA worker for support.'); return false;" class="underline">Contact ASHA Worker</a></li>
+            <li><a href="#" onclick="alert('Visit https://nhm.gov.in for caregiver guidelines.'); return false;" class="underline">Caregiver Guidelines</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function findNearbyFacilities() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const facilitiesDiv = document.getElementById('facilities');
+                facilitiesDiv.innerHTML = 'Loading facilities...';
+                facilitiesDiv.style.display = 'block';
+
+                fetch(`/api/health/facilities?lat=${lat}&lon=${lon}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.facilities && data.facilities.length > 0) {
+                            facilitiesDiv.innerHTML = data.facilities.map(f => 
+                                `<p>${f.name} (${f.distance.toFixed(2)} km) <a href="${f.directions_url}" target="_blank">Get Directions</a></p>`
+                            ).join('');
+                        } else {
+                            facilitiesDiv.innerHTML = 'No health facilities found within 100 km.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Facilities Error:', error);
+                        facilitiesDiv.innerHTML = `Error fetching facilities: ${error.message}`;
+                    });
+            }, error => {
+                console.error('Geolocation Error:', error);
+                document.getElementById('facilities').innerHTML = `Geolocation error: ${error.message}`;
+            });
+        } else {
+            document.getElementById('facilities').innerHTML = 'Geolocation not supported by your browser.';
+        }
+    }
+
+    document.getElementById('caregiverForm').addEventListener('submit', function(e) {
+        const supportContact = document.getElementById('supportContact').value;
+        if (supportContact && !supportContact.match(/[0-9]{10,12}/)) {
+            e.preventDefault();
+            alert('Please enter a valid 10-12 digit phone number.');
+        }
+    });
+</script>
+{% endblock %}

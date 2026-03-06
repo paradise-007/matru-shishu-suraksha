@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-container">
+    <h2>Welcome to Matru-Shishu Suraksha</h2>
+    <p>Hello, {{ session.get('email', 'Guest') }}!</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+<div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center">Dashboard</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg card">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-4">Quick Actions</h3>
+            <button onclick="findFacilities()" class="btn-primary w-full text-white p-3 rounded-lg transition mb-4">Find Nearby Facilities</button>
+            <div id="map" style="height: 400px; width: 100%; display: none;" class="bg-indigo-50 rounded-lg mb-4"></div>
+            <div id="facilities" class="bg-indigo-50 p-4 rounded-lg text-indigo-800"></div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg card md:col-span-2">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-4">Ask MamaBot</h3>
+            <div class="flex items-center mb-4">
+                <textarea id="chatbot-input" placeholder="e.g., What should I eat in my 2nd trimester?" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none h-24 resize-y"></textarea>
+                <button onclick="startVoiceInput()" class="ml-2 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition" title="Voice Input">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                </button>
+            </div>
+            <div class="flex justify-between">
+                <button onclick="sendChatbotQuery()" class="btn-primary text-white p-3 rounded-lg transition">Send</button>
+                <button onclick="speakResponse()" class="btn-primary text-white p-3 rounded-lg transition">Hear Response</button>
+            </div>
+            <div id="chatbot-response" class="bg-indigo-50 p-4 rounded-lg mt-4 text-indigo-800 min-h-16"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sendChatbotQuery() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+        if (!message) {
+            alert('Please enter a question.');
+            return;
+        }
+        const responseDiv = document.getElementById('chatbot-response');
+        responseDiv.innerHTML = 'MamaBot: Thinking...';
+
+        fetch('/api/chatbot/query', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ message }),
+            credentials: 'include'  // Include cookies for authentication
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Chatbot API Response:', data);
+            if (data.response) {
+                responseDiv.innerHTML = `MamaBot: ${data.response}`;
+            } else if (data.error) {
+                responseDiv.innerHTML = `MamaBot: ${data.error}`;
+            } else {
+                responseDiv.innerHTML = 'MamaBot: No response available.';
+            }
+        })
+        .catch(error => {
+            console.error('Chatbot Error:', error);
+            responseDiv.innerHTML = `MamaBot: Error occurred. Details: ${error.message}`;
+        });
+        input.value = '';
+    }
+
+    function findFacilities() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const facilitiesDiv = document.getElementById('facilities');
+                const mapDiv = document.getElementById('map');
+                facilitiesDiv.innerHTML = 'Loading facilities...';
+                mapDiv.style.display = 'none';
+
+                fetch(`/api/health/facilities?lat=${lat}&lon=${lon}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Facilities API Response:', data);
+                        if (data.facilities && data.facilities.length > 0) {
+                            facilitiesDiv.innerHTML = data.facilities.map(f => 
+                                `<p>${f.name} (${f.distance.toFixed(2)} km) <a href="${f.directions_url}" target="_blank">Get Directions</a></p>`
+                            ).join('');
+                            mapDiv.style.display = 'block';
+                            if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
+                                initMap(lat, lon, data.facilities);
+                            } else {
+                                facilitiesDiv.innerHTML += '<p>Error: Google Maps API not loaded. Check your API key.</p>';
+                                console.error('Google Maps API not loaded');
+                            }
+                        } else {
+                            facilitiesDiv.innerHTML = 'No medical facilities found within 100 km.';
+                            mapDiv.style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Facilities Error:', error);
+                        facilitiesDiv.innerHTML = `Error fetching facilities. Details: ${error.message}`;
+                        mapDiv.style.display = 'none';
+                    });
+            }, error => {
+                console.error('Geolocation Error:', error);
+                document.getElementById('facilities').innerHTML = `Geolocation error: ${error.message}`;
+                document.getElementById('map').style.display = 'none';
+            });
+        } else {
+            document.getElementById('facilities').innerHTML = 'Geolocation not supported by your browser.';
+            document.getElementById('map').style.display = 'none';
+        }
+    }
+
+    function initMap(lat, lon, facilities) {
+        if (!lat || !lon || isNaN(lat) || isNaN(lon)) {
+            console.error('Invalid latitude or longitude:', { lat, lon });
+            return;
+        }
+        if (!facilities || !Array.isArray(facilities)) {
+            console.error('Invalid facilities data:', facilities);
+            return;
+        }
+
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: parseFloat(lat), lng: parseFloat(lon) },
+            zoom: 13,
+        });
+        facilities.forEach(facility => {
+            new google.maps.Marker({
+                position: { lat: parseFloat(facility.lat), lng: parseFloat(facility.lon) },
+                map: map,
+                title: facility.name,
+            });
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}" async defer></script>
+{% endblock %}

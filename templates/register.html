@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="register">Register</h2>
+    <form method="POST">
+        <div class="mb-4">
+            <label for="email" class="block text-indigo-700 font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" required class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-indigo-700 font-medium mb-2">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+        <div class="mb-4">
+            <label for="district" class="block text-indigo-700 font-medium mb-2">District</label>
+            <select id="district" name="district" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Amreli">Amreli</option>
+                <option value="Anand">Anand</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="userType" class="block text-indigo-700 font-medium mb-2">User Type</label>
+            <select id="userType" name="userType" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="Pregnant Woman">Pregnant Woman</option>
+                <option value="Mother">Mother</option>
+                <option value="Caregiver">Caregiver</option>
+            </select>
+        </div>
+        <div class="mb-6">
+            <label for="language" class="block text-indigo-700 font-medium mb-2">Language</label>
+            <select id="language" name="language" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="en">English</option>
+                <option value="gu">Gujarati</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition">Register</button>
+    </form>
+    <a href="{{ url_for('login') }}" class="block text-center mt-4 text-indigo-600 hover:underline">Already have an account? Login</a>
+</div>
+{% endblock %}

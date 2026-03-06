@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block title %}Progress Tracking{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="progress">Progress Tracking</h2>
+    <p class="text-indigo-600 mb-4 text-center">Monitor your child’s health progress and connect with the community for support.</p>
+
+    <!-- Progress Timeline -->
+    <div id="progress-timeline" class="bg-indigo-50 p-4 rounded-lg mb-6 text-indigo-800">
+        {{ progress | safe }}
+        <button onclick="showHistory()" class="btn-secondary mt-2 text-white p-2 rounded-lg transition">View History</button>
+    </div>
+
+    <!-- Advanced Progress Visualization -->
+    <div id="progress-chart" class="mb-6" style="display: none;">
+        <canvas id="progressCanvas" width="400" height="200"></canvas>
+        <button onclick="generateChart()" class="btn-secondary mt-2 text-white p-2 rounded-lg transition">Generate Chart</button>
+    </div>
+
+    <!-- Community Features -->
+    <div class="mb-6 bg-indigo-50 p-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-indigo-700 mb-2">Community Support</h3>
+        <div id="community-tips" class="text-indigo-600">
+            <p><strong>Tip of the Day:</strong> Regular weight checks help detect malnutrition early—visit your Anganwadi center!</p>
+            <button onclick="fetchCommunityTips()" class="btn-secondary mt-2 text-white p-2 rounded-lg transition">More Tips</button>
+        </div>
+        <div id="success-stories" class="mt-4 text-sm text-indigo-700" style="display: none;">
+            <!-- Populated dynamically -->
+        </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="mb-6">
+        <label for="feedback-score" class="block text-indigo-700 font-medium mb-2">Feedback (1-5) <span class="text-xs text-gray-500">(Rate your experience)</span></label>
+        <input type="number" id="feedback-score" placeholder="Feedback (1-5)" min="1" max="5" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+        <textarea id="feedback-comment" placeholder="Add a comment (optional)" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none mt-2" rows="3"></textarea>
+    </div>
+    <button onclick="saveFeedback()" class="btn-primary w-full text-white p-3 rounded-lg transition">Submit Feedback</button>
+
+    <!-- Historical Data Modal -->
+    <div id="history-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-md">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-4">Progress History</h3>
+            <div id="history-content" class="text-indigo-700"></div>
+            <button onclick="hideHistory()" class="btn-primary mt-4 text-white p-2 rounded-lg transition">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fetch historical progress data
+    function showHistory() {
+        fetch('/api/health/history?email={{ session.get("email", "unknown") }}')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                const historyContent = document.getElementById('history-content');
+                if (data.history && data.history.length > 0) {
+                    historyContent.innerHTML = data.history.map(item => 
+                        `<p>Date: ${item.created_at} | Weight: ${item.weight || 'N/A'} kg | Height: ${item.height || 'N/A'} cm</p>`
+                    ).join('');
+                } else {
+                    historyContent.innerHTML = 'No progress data available.';
+                }
+                document.getElementById('history-modal').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('History Error:', error);
+                document.getElementById('history-content').innerHTML = `Error: ${error.message}`;
+                document.getElementById('history-modal').classList.remove('hidden');
+            });
+    }
+
+    function hideHistory() {
+        document.getElementById('history-modal').classList.add('hidden');
+    }
+
+    // Generate Progress Chart
+    function generateChart() {
+        const ctx = document.getElementById('progressCanvas').getContext('2d');
+        fetch('/api/health/history?email={{ session.get("email", "unknown") }}')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                if (data.history && data.history.length > 0) {
+                    const labels = data.history.map(item => item.created_at);
+                    const weights = data.history.map(item => item.weight || 0);
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Weight (kg)',
+                                data: weights,
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 2,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            scales: { y: { beginAtZero: true } }
+                        }
+                    });
+                    document.getElementById('progress-chart').style.display = 'block';
+                } else {
+                    alert('No data available to generate chart.');
+                }
+            })
+            .catch(error => {
+                console.error('Chart Error:', error);
+                alert(`Error generating chart: ${error.message}`);
+            });
+    }
+
+    // Fetch Community Tips
+    function fetchCommunityTips() {
+        fetch('/api/community/tips')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                const tipsDiv = document.getElementById('community-tips');
+                if (data.tips && data.tips.length > 0) {
+                    tipsDiv.innerHTML = `<p><strong>Community Tips:</strong></p>` + data.tips.map(tip => `<p>${tip}</p>`).join('');
+                } else {
+                    tipsDiv.innerHTML = '<p>No community tips available.</p>';
+                }
+                document.getElementById('success-stories').style.display = 'block';
+                document.getElementById('success-stories').innerHTML = '<p><strong>Success Story:</strong> A caregiver in Gujarat improved their child’s health with regular Anganwadi visits!</p>';
+            })
+            .catch(error => {
+                console.error('Tips Error:', error);
+                document.getElementById('community-tips').innerHTML = `Error: ${error.message}`;
+            });
+    }
+
+    // Save Feedback
+    function saveFeedback() {
+        const score = document.getElementById('feedback-score').value;
+        const comment = document.getElementById('feedback-comment').value;
+        if (!score || score < 1 || score > 5) {
+            alert('Please enter a valid feedback score between 1 and 5.');
+            return;
+        }
+        fetch('/api/health/feedback', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ score, comment })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            alert(data.msg || 'Feedback submitted successfully!');
+            document.getElementById('feedback-score').value = '';
+            document.getElementById('feedback-comment').value = '';
+        })
+        .catch(error => {
+            console.error('Feedback Error:', error);
+            alert(`Error submitting feedback: ${error.message}`);
+        });
+    }
+</script>
+{% endblock %}

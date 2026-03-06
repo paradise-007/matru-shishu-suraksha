@@ -1,0 +1,384 @@
+{
+    "data": [
+      {
+        "title": "Maternal Health - Nutrition",
+        "paragraphs": [
+          {
+            "context": "In India, pregnant women need 300 extra calories daily in the second trimester to support fetal growth. Iron and folic acid supplements are essential to prevent anemia, starting from the first trimester.",
+            "qas": [
+              {"id": "0", "question": "How many extra calories are needed in the second trimester?", "answers": [{"text": "300 extra calories daily", "answer_start": 37}]},
+              {"id": "1", "question": "What supplements prevent anemia during pregnancy?", "answers": [{"text": "Iron and folic acid supplements", "answer_start": 97}]}
+            ]
+          },
+          {
+            "context": "The Indian Council of Medical Research (ICMR) recommends a diet with fruits like bananas, vegetables like spinach, and proteins like lentils for pregnant women to ensure nutrient intake.",
+            "qas": [
+              {"id": "2", "question": "Which fruits are recommended for pregnant women?", "answers": [{"text": "bananas", "answer_start": 71}]},
+              {"id": "3", "question": "What vegetables should pregnant women eat?", "answers": [{"text": "spinach", "answer_start": 92}]}
+            ]
+          },
+          {
+            "context": "Calcium-rich foods such as milk and curd are vital during pregnancy to strengthen bones and teeth of both mother and baby, as per ICMR guidelines.",
+            "qas": [
+              {"id": "4", "question": "What calcium-rich foods are recommended?", "answers": [{"text": "milk and curd", "answer_start": 14}]},
+              {"id": "5", "question": "Why is calcium important during pregnancy?", "answers": [{"text": "to strengthen bones and teeth", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "Pregnant women should avoid unripe papaya and pineapple due to enzymes that may cause uterine contractions, according to Indian dietary guidelines.",
+            "qas": [
+              {"id": "6", "question": "What fruits should pregnant women avoid?", "answers": [{"text": "unripe papaya and pineapple", "answer_start": 28}]},
+              {"id": "7", "question": "Why avoid certain fruits during pregnancy?", "answers": [{"text": "due to enzymes that may cause uterine contractions", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "Vitamin D from sunlight exposure or fortified foods is crucial during pregnancy to support calcium absorption and bone health.",
+            "qas": [
+              {"id": "8", "question": "Where can pregnant women get Vitamin D?", "answers": [{"text": "from sunlight exposure or fortified foods", "answer_start": 0}]},
+              {"id": "9", "question": "What is Vitamin D’s role in pregnancy?", "answers": [{"text": "to support calcium absorption and bone health", "answer_start": 56}]}
+            ]
+          },
+          {
+            "context": "Omega-3 fatty acids from fish like salmon can benefit fetal brain development, but limit intake to avoid mercury, as per ICMR advice.",
+            "qas": [
+              {"id": "10", "question": "Which fish provides Omega-3?", "answers": [{"text": "salmon", "answer_start": 43}]},
+              {"id": "11", "question": "Why limit fish intake during pregnancy?", "answers": [{"text": "to avoid mercury", "answer_start": 88}]}
+            ]
+          },
+          {
+            "context": "Hydration is key during pregnancy, with a recommendation of 2-3 liters of water daily to prevent dehydration and support amniotic fluid.",
+            "qas": [
+              {"id": "12", "question": "How much water should pregnant women drink?", "answers": [{"text": "2-3 liters of water daily", "answer_start": 32}]},
+              {"id": "13", "question": "Why is hydration important during pregnancy?", "answers": [{"text": "to prevent dehydration and support amniotic fluid", "answer_start": 61}]}
+            ]
+          },
+          {
+            "context": "Iron-rich foods like liver and spinach help combat fatigue and support blood volume increase during pregnancy.",
+            "qas": [
+              {"id": "14", "question": "What foods are iron-rich for pregnant women?", "answers": [{"text": "liver and spinach", "answer_start": 15}]},
+              {"id": "15", "question": "How does iron help during pregnancy?", "answers": [{"text": "combat fatigue and support blood volume increase", "answer_start": 41}]}
+            ]
+          },
+          {
+            "context": "Folic acid intake before and during early pregnancy reduces the risk of neural tube defects in the fetus, as recommended by ICMR.",
+            "qas": [
+              {"id": "16", "question": "What does folic acid prevent?", "answers": [{"text": "neural tube defects", "answer_start": 86}]},
+              {"id": "17", "question": "When should folic acid be taken?", "answers": [{"text": "before and during early pregnancy", "answer_start": 0}]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Maternal Health - Vaccinations",
+        "paragraphs": [
+          {
+            "context": "The Universal Immunization Programme in India mandates TT1 at 12 weeks and TT2 at 20 weeks of pregnancy to protect against tetanus, with a booster if the last dose was over 3 years ago.",
+            "qas": [
+              {"id": "18", "question": "When is TT1 given during pregnancy?", "answers": [{"text": "at 12 weeks", "answer_start": 64}]},
+              {"id": "19", "question": "When is TT2 administered?", "answers": [{"text": "at 20 weeks", "answer_start": 77}]}
+            ]
+          },
+          {
+            "context": "Influenza vaccination is recommended for pregnant women during flu season to lower the risk of complications, as advised by the Ministry of Health and Family Welfare.",
+            "qas": [
+              {"id": "20", "question": "Which vaccine is advised during flu season?", "answers": [{"text": "Influenza vaccination", "answer_start": 0}]},
+              {"id": "21", "question": "What are the benefits of the influenza vaccine?", "answers": [{"text": "to lower the risk of complications", "answer_start": 86}]}
+            ]
+          },
+          {
+            "context": "COVID-19 vaccination is safe for pregnant women, with the first dose recommended at 20 weeks and the second at 28 weeks, per updated Indian guidelines.",
+            "qas": [
+              {"id": "22", "question": "When is the first COVID-19 vaccine dose given?", "answers": [{"text": "at 20 weeks", "answer_start": 68}]},
+              {"id": "23", "question": "When is the second COVID-19 dose?", "answers": [{"text": "at 28 weeks", "answer_start": 87}]}
+            ]
+          },
+          {
+            "context": "Hepatitis B vaccination is offered to pregnant women at risk, with the first dose at 20 weeks and a second at 28 weeks to prevent transmission to the newborn.",
+            "qas": [
+              {"id": "24", "question": "Who should get the Hepatitis B vaccine?", "answers": [{"text": "pregnant women at risk", "answer_start": 0}]},
+              {"id": "25", "question": "When is the second Hepatitis B dose?", "answers": [{"text": "at 28 weeks", "answer_start": 89}]}
+            ]
+          },
+          {
+            "context": "The rubella vaccine is not given during pregnancy but is recommended before conception to prevent congenital rubella syndrome.",
+            "qas": [
+              {"id": "26", "question": "Can pregnant women get the rubella vaccine?", "answers": [{"text": "no", "answer_start": 4}]},
+              {"id": "27", "question": "When should the rubella vaccine be taken?", "answers": [{"text": "before conception", "answer_start": 54}]}
+            ]
+          },
+          {
+            "context": "A booster dose of TT may be given if the last tetanus shot was more than 3 years ago, ensuring protection throughout pregnancy.",
+            "qas": [
+              {"id": "28", "question": "When is a TT booster needed?", "answers": [{"text": "if the last tetanus shot was more than 3 years ago", "answer_start": 24}]},
+              {"id": "29", "question": "What does the TT booster protect against?", "answers": [{"text": "tetanus", "answer_start": 92}]}
+            ]
+          },
+          {
+            "context": "The HPV vaccine is not routinely recommended during pregnancy but can be considered postpartum to prevent cervical cancer.",
+            "qas": [
+              {"id": "30", "question": "Is the HPV vaccine given during pregnancy?", "answers": [{"text": "no", "answer_start": 4}]},
+              {"id": "31", "question": "When can the HPV vaccine be taken?", "answers": [{"text": "postpartum", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "The pneumococcal vaccine is advised for pregnant women with chronic conditions, with one dose sufficient during pregnancy.",
+            "qas": [
+              {"id": "32", "question": "Who should get the pneumococcal vaccine?", "answers": [{"text": "pregnant women with chronic conditions", "answer_start": 4}]},
+              {"id": "33", "question": "How many doses of pneumococcal vaccine are needed?", "answers": [{"text": "one dose", "answer_start": 79}]}
+            ]
+          },
+          {
+            "context": "The varicella vaccine is contraindicated during pregnancy but can be given after delivery to prevent chickenpox.",
+            "qas": [
+              {"id": "34", "question": "Can pregnant women get the varicella vaccine?", "answers": [{"text": "no", "answer_start": 4}]},
+              {"id": "35", "question": "When can the varicella vaccine be administered?", "answers": [{"text": "after delivery", "answer_start": 61}]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Child Health - Vaccinations",
+        "paragraphs": [
+          {
+            "context": "The DPT vaccine is given at 6, 10, and 14 weeks after birth in India to protect against diphtheria, pertussis, and tetanus, with OPV administered at the same intervals.",
+            "qas": [
+              {"id": "36", "question": "When is the DPT vaccine scheduled?", "answers": [{"text": "at 6, 10, and 14 weeks after birth", "answer_start": 27}]},
+              {"id": "37", "question": "What diseases does DPT prevent?", "answers": [{"text": "diphtheria, pertussis, and tetanus", "answer_start": 95}]}
+            ]
+          },
+          {
+            "context": "The measles vaccine is given at 9 months, with a booster at 16-24 months, as part of the National Immunization Schedule to ensure long-term immunity.",
+            "qas": [
+              {"id": "38", "question": "When is the first measles vaccine given?", "answers": [{"text": "at 9 months", "answer_start": 28}]},
+              {"id": "39", "question": "When is the measles booster due?", "answers": [{"text": "at 16-24 months", "answer_start": 58}]}
+            ]
+          },
+          {
+            "context": "The MMR vaccine, protecting against measles, mumps, and rubella, is scheduled at 9 months and a booster at 15-18 months in India.",
+            "qas": [
+              {"id": "40", "question": "What does the MMR vaccine protect against?", "answers": [{"text": "measles, mumps, and rubella", "answer_start": 31}]},
+              {"id": "41", "question": "When is the MMR booster given?", "answers": [{"text": "at 15-18 months", "answer_start": 93}]}
+            ]
+          },
+          {
+            "context": "The rotavirus vaccine is given at 6, 10, and 14 weeks to protect against severe diarrhea, with a maximum age limit of 8 months for the last dose.",
+            "qas": [
+              {"id": "42", "question": "When is the rotavirus vaccine given?", "answers": [{"text": "at 6, 10, and 14 weeks", "answer_start": 27}]},
+              {"id": "43", "question": "What does rotavirus vaccine prevent?", "answers": [{"text": "severe diarrhea", "answer_start": 68}]}
+            ]
+          },
+          {
+            "context": "The Hib vaccine is administered at 6, 10, and 14 weeks to prevent Haemophilus influenzae type b infections, which can cause meningitis.",
+            "qas": [
+              {"id": "44", "question": "When is the Hib vaccine given?", "answers": [{"text": "at 6, 10, and 14 weeks", "answer_start": 27}]},
+              {"id": "45", "question": "What disease does Hib prevent?", "answers": [{"text": "meningitis", "answer_start": 97}]}
+            ]
+          },
+          {
+            "context": "The polio vaccine (OPV) is given at birth, 6 weeks, 10 weeks, and 14 weeks, with a booster at 16-24 months to ensure immunity.",
+            "qas": [
+              {"id": "46", "question": "When is the first polio vaccine given?", "answers": [{"text": "at birth", "answer_start": 33}]},
+              {"id": "47", "question": "When is the polio booster due?", "answers": [{"text": "at 16-24 months", "answer_start": 92}]}
+            ]
+          },
+          {
+            "context": "The hepatitis B vaccine for infants starts at birth, followed by doses at 6 and 14 weeks to prevent liver disease.",
+            "qas": [
+              {"id": "48", "question": "When is the first hepatitis B vaccine given?", "answers": [{"text": "at birth", "answer_start": 33}]},
+              {"id": "49", "question": "What does hepatitis B vaccine prevent?", "answers": [{"text": "liver disease", "answer_start": 88}]}
+            ]
+          },
+          {
+            "context": "The PCV vaccine is given at 6 weeks, 14 weeks, and 9 months to protect against pneumococcal diseases like pneumonia.",
+            "qas": [
+              {"id": "50", "question": "When is the PCV vaccine scheduled?", "answers": [{"text": "at 6 weeks, 14 weeks, and 9 months", "answer_start": 22}]},
+              {"id": "51", "question": "What does PCV prevent?", "answers": [{"text": "pneumococcal diseases like pneumonia", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "If a child misses a vaccine dose, consult a health worker to reschedule, as delays can affect immunity levels.",
+            "qas": [
+              {"id": "52", "question": "What should I do if a vaccine dose is missed?", "answers": [{"text": "consult a health worker to reschedule", "answer_start": 0}]},
+              {"id": "53", "question": "Why is timely vaccination important?", "answers": [{"text": "delays can affect immunity levels", "answer_start": 67}]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Maternal Health - Prenatal Care",
+        "paragraphs": [
+          {
+            "context": "Prenatal checkups should occur monthly until 28 weeks, biweekly from 28 to 36 weeks, and weekly after 36 weeks to monitor maternal and fetal health.",
+            "qas": [
+              {"id": "54", "question": "How often are checkups before 28 weeks?", "answers": [{"text": "monthly", "answer_start": 34}]},
+              {"id": "55", "question": "How often after 36 weeks?", "answers": [{"text": "weekly", "answer_start": 96}]}
+            ]
+          },
+          {
+            "context": "Ultrasounds are recommended at 8-12 weeks for dating and at 18-20 weeks for anomaly screening, as per Indian prenatal care protocols.",
+            "qas": [
+              {"id": "56", "question": "When is the first ultrasound done?", "answers": [{"text": "at 8-12 weeks", "answer_start": 29}]},
+              {"id": "57", "question": "What is checked at 18-20 weeks?", "answers": [{"text": "anomaly screening", "answer_start": 71}]}
+            ]
+          },
+          {
+            "context": "Danger signs during pregnancy include severe headache, vision changes, and vaginal bleeding, requiring immediate medical attention.",
+            "qas": [
+              {"id": "58", "question": "What are danger signs in pregnancy?", "answers": [{"text": "severe headache, vision changes, and vaginal bleeding", "answer_start": 34}]},
+              {"id": "59", "question": "What should I do if I see danger signs?", "answers": [{"text": "require immediate medical attention", "answer_start": 86}]}
+            ]
+          },
+          {
+            "context": "Postnatal depression may occur within weeks after delivery, with symptoms like sadness and sleep issues, and should be addressed with a doctor.",
+            "qas": [
+              {"id": "60", "question": "What is postnatal depression?", "answers": [{"text": "symptoms like sadness and sleep issues", "answer_start": 67}]},
+              {"id": "61", "question": "When might postnatal depression start?", "answers": [{"text": "within weeks after delivery", "answer_start": 0}]}
+            ]
+          },
+          {
+            "context": "Blood pressure checks during prenatal visits help detect preeclampsia, which can cause swelling and protein in urine.",
+            "qas": [
+              {"id": "62", "question": "What does a blood pressure check detect?", "answers": [{"text": "preeclampsia", "answer_start": 58}]},
+              {"id": "63", "question": "What are preeclampsia symptoms?", "answers": [{"text": "swelling and protein in urine", "answer_start": 79}]}
+            ]
+          },
+          {
+            "context": "Weight gain should be monitored during pregnancy, with an average of 0.5-1 kg per month in the first trimester being normal.",
+            "qas": [
+              {"id": "64", "question": "How much weight gain is normal in the first trimester?", "answers": [{"text": "0.5-1 kg per month", "answer_start": 54}]},
+              {"id": "65", "question": "Why monitor weight during pregnancy?", "answers": [{"text": "to ensure healthy development", "answer_start": 85}]}
+            ]
+          },
+          {
+            "context": "Frequent urination is common in pregnancy due to pressure on the bladder, but persistent pain requires a doctor’s visit.",
+            "qas": [
+              {"id": "66", "question": "Why do pregnant women urinate frequently?", "answers": [{"text": "due to pressure on the bladder", "answer_start": 34}]},
+              {"id": "67", "question": "When should I see a doctor for urination?", "answers": [{"text": "if persistent pain occurs", "answer_start": 80}]}
+            ]
+          },
+          {
+            "context": "Glucose screening is done between 24-28 weeks to check for gestational diabetes, which can affect fetal growth.",
+            "qas": [
+              {"id": "68", "question": "When is glucose screening done?", "answers": [{"text": "between 24-28 weeks", "answer_start": 23}]},
+              {"id": "69", "question": "What does glucose screening check for?", "answers": [{"text": "gestational diabetes", "answer_start": 51}]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Child Health - Nutrition",
+        "paragraphs": [
+          {
+            "context": "Exclusive breastfeeding is advised for the first six months, followed by complementary feeding with mashed vegetables and cereals, per WHO and ICMR guidelines.",
+            "qas": [
+              {"id": "70", "question": "How long should I breastfeed exclusively?", "answers": [{"text": "for the first six months", "answer_start": 32}]},
+              {"id": "71", "question": "What foods can I introduce after six months?", "answers": [{"text": "mashed vegetables and cereals", "answer_start": 84}]}
+            ]
+          },
+          {
+            "context": "After six months, introduce iron-fortified cereals and pureed fruits like apples to meet a child’s nutritional needs, avoiding honey until one year.",
+            "qas": [
+              {"id": "72", "question": "What cereals should I give after six months?", "answers": [{"text": "iron-fortified cereals", "answer_start": 18}]},
+              {"id": "73", "question": "Why avoid honey before one year?", "answers": [{"text": "to prevent botulism risk", "answer_start": 98}]}
+            ]
+          },
+          {
+            "context": "Weaning should begin at 6 months with soft foods like rice porridge, gradually increasing texture as the child grows.",
+            "qas": [
+              {"id": "74", "question": "When should weaning start?", "answers": [{"text": "at 6 months", "answer_start": 14}]},
+              {"id": "75", "question": "What is a good first weaning food?", "answers": [{"text": "rice porridge", "answer_start": 46}]}
+            ]
+          },
+          {
+            "context": "A child typically sits without support by 6-8 months, a milestone indicating readiness for solid foods.",
+            "qas": [
+              {"id": "76", "question": "When does a child sit without support?", "answers": [{"text": "by 6-8 months", "answer_start": 14}]},
+              {"id": "77", "question": "What does sitting indicate?", "answers": [{"text": "readiness for solid foods", "answer_start": 58}]}
+            ]
+          },
+          {
+            "context": "Water can be introduced to children after 6 months, starting with small sips to maintain hydration.",
+            "qas": [
+              {"id": "78", "question": "When can children start drinking water?", "answers": [{"text": "after 6 months", "answer_start": 14}]},
+              {"id": "79", "question": "How should water be given initially?", "answers": [{"text": "starting with small sips", "answer_start": 46}]}
+            ]
+          },
+          {
+            "context": "Formula milk is an option if breastfeeding isn’t possible, but consult a pediatrician for the right type and amount.",
+            "qas": [
+              {"id": "80", "question": "When is formula milk used?", "answers": [{"text": "if breastfeeding isn’t possible", "answer_start": 14}]},
+              {"id": "81", "question": "Who should I consult for formula?", "answers": [{"text": "a pediatrician", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "Pureed meats can be introduced after 8 months to provide protein, ensuring they are well-cooked and free of salt.",
+            "qas": [
+              {"id": "82", "question": "When can pureed meats be introduced?", "answers": [{"text": "after 8 months", "answer_start": 14}]},
+              {"id": "83", "question": "How should meats be prepared for babies?", "answers": [{"text": "well-cooked and free of salt", "answer_start": 56}]}
+            ]
+          },
+          {
+            "context": "Children should eat a variety of fruits like mangoes by 9 months to boost vitamin intake and taste development.",
+            "qas": [
+              {"id": "84", "question": "When can children eat mangoes?", "answers": [{"text": "by 9 months", "answer_start": 14}]},
+              {"id": "85", "question": "Why eat fruits like mangoes?", "answers": [{"text": "to boost vitamin intake and taste development", "answer_start": 46}]}
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Additional Topics",
+        "paragraphs": [
+          {
+            "context": "Postnatal depression may appear within 4-6 weeks after delivery, with symptoms like persistent sadness and loss of appetite, requiring professional help.",
+            "qas": [
+              {"id": "86", "question": "When does postnatal depression appear?", "answers": [{"text": "within 4-6 weeks after delivery", "answer_start": 0}]},
+              {"id": "87", "question": "What are symptoms of postnatal depression?", "answers": [{"text": "persistent sadness and loss of appetite", "answer_start": 67}]}
+            ]
+          },
+          {
+            "context": "A child’s first words typically occur between 10-14 months, marking an important language development milestone.",
+            "qas": [
+              {"id": "88", "question": "When do children say their first words?", "answers": [{"text": "between 10-14 months", "answer_start": 14}]},
+              {"id": "89", "question": "What does first words indicate?", "answers": [{"text": "language development milestone", "answer_start": 58}]}
+            ]
+          },
+          {
+            "context": "Emergency signs in children include high fever above 100.4°F, difficulty breathing, or lethargy, needing immediate hospital care.",
+            "qas": [
+              {"id": "90", "question": "What is a high fever in children?", "answers": [{"text": "above 100.4°F", "answer_start": 34}]},
+              {"id": "91", "question": "What should I do for emergency signs?", "answers": [{"text": "needing immediate hospital care", "answer_start": 86}]}
+            ]
+          },
+          {
+            "context": "Postpartum hemorrhage is an emergency sign after delivery, characterized by heavy bleeding, requiring urgent medical intervention.",
+            "qas": [
+              {"id": "92", "question": "What is postpartum hemorrhage?", "answers": [{"text": "heavy bleeding", "answer_start": 67}]},
+              {"id": "93", "question": "What to do if postpartum hemorrhage occurs?", "answers": [{"text": "requiring urgent medical intervention", "answer_start": 86}]}
+            ]
+          },
+          {
+            "context": "A child walking alone typically happens between 9-18 months, depending on physical development and practice.",
+            "qas": [
+              {"id": "94", "question": "When does a child walk alone?", "answers": [{"text": "between 9-18 months", "answer_start": 14}]},
+              {"id": "95", "question": "What affects walking alone?", "answers": [{"text": "physical development and practice", "answer_start": 58}]}
+            ]
+          },
+          {
+            "context": "Severe abdominal pain or swelling in pregnancy may indicate preeclampsia or ectopic pregnancy, needing immediate attention.",
+            "qas": [
+              {"id": "96", "question": "What might severe abdominal pain indicate?", "answers": [{"text": "preeclampsia or ectopic pregnancy", "answer_start": 54}]},
+              {"id": "97", "question": "What should I do if I have severe pain?", "answers": [{"text": "needing immediate attention", "answer_start": 86}]}
+            ]
+          },
+          {
+            "context": "A baby’s first smile, often social, appears around 6-8 weeks, signaling emotional connection.",
+            "qas": [
+              {"id": "98", "question": "When does a baby’s first smile appear?", "answers": [{"text": "around 6-8 weeks", "answer_start": 14}]},
+              {"id": "99", "question": "What does the first smile indicate?", "answers": [{"text": "emotional connection", "answer_start": 58}]}
+            ]
+          }
+        ]
+      }
+    ]
+  }

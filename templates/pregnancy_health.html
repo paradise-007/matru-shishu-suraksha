@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}Pregnancy Health{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="pregnancyHealth">Pregnancy Health</h2>
+    <form method="POST">
+        <div class="mb-4">
+            <label for="lastCheckup" class="block text-indigo-700 font-medium mb-2">Last Checkup Date</label>
+            <input type="date" id="lastCheckup" name="lastCheckup" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+        <div class="mb-4">
+            <label for="antenatalVisits" class="block text-indigo-700 font-medium mb-2">Antenatal Visits</label>
+            <select id="antenatalVisits" name="antenatalVisits" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="mcpCard" class="block text-indigo-700 font-medium mb-2">MCP Card Available</label>
+            <select id="mcpCard" name="mcpCard" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="ifaTaken" class="block text-indigo-700 font-medium mb-2">IFA Taken</label>
+            <select id="ifaTaken" name="ifaTaken" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="ifaDays" class="block text-indigo-700 font-medium mb-2">IFA Days (0-100, 100+)</label>
+            <input type="number" id="ifaDays" name="ifaDays" placeholder="IFA Days" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Diet Diversity</label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="dietDiversity" value="Grains" class="mr-2">Grains</label>
+                <label class="flex items-center"><input type="checkbox" name="dietDiversity" value="Vegetables" class="mr-2">Vegetables</label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="ageAtMarriage" class="block text-indigo-700 font-medium mb-2">Age at Marriage</label>
+            <select id="ageAtMarriage" name="ageAtMarriage" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="<18"><18</option>
+                <option value="18-24">18-24</option>
+                <option value="25+">25+</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Symptoms</label>
+            <div class="flex flex-wrap gap-4">
+                <label class="flex items-center"><input type="checkbox" name="symptoms" value="Fatigue" class="mr-2">Fatigue</label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="deliveryLocation" class="block text-indigo-700 font-medium mb-2">Delivery Location</label>
+            <select id="deliveryLocation" name="deliveryLocation" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="Home">Home</option>
+                <option value="Public Facility">Public Facility</option>
+                <option value="Private Facility">Private Facility</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="chiranjeevi" class="block text-indigo-700 font-medium mb-2">Enrolled in Chiranjeevi Yojana</label>
+            <select id="chiranjeevi" name="chiranjeevi" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-indigo-700 font-medium mb-2">Send Health Update to Doctor/User?</label>
+            <input type="checkbox" id="sendEmail" name="sendEmail" value="true" class="mr-2">
+            <span class="text-sm text-gray-600">(Subject: Pregnancy Health Update - Matru-Shishu Suraksha, Body: See below for details)</span>
+        </div>
+        <div class="mt-6">
+            <h3 class="text-2xl font-semibold text-indigo-800 mb-4">Pregnancy Progress</h3>
+            <canvas id="pregnancyProgress" style="max-height: 200px;"></canvas>
+            <p id="progressInsight" class="text-indigo-600 mt-2"></p>
+        </div>
+        <div class="mt-6 text-indigo-600">
+            <h3 class="text-xl font-medium">Chiranjeevi Yojana</h3>
+            <p id="chiranjeeviInfo" class="mt-2">Check eligibility after saving.</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            document.querySelector('form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData.entries());
+                const response = await fetch('/pregnancy_health', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.msg) {
+                    alert(result.msg);
+                    document.getElementById('chiranjeeviInfo').textContent = data.chiranjeevi === 'false' && data.deliveryLocation === 'Public Facility'
+                        ? "You may be eligible for Chiranjeevi Yojana (free delivery at public facilities). Contact your local health center."
+                        : "You’re enrolled or ineligible. Check with authorities.";
+                }
+            });
+        </script>
+        <script>
+            document.querySelector('form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData.entries());
+                const response = await fetch('/pregnancy_health', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.msg) {
+                    alert(result.msg);
+                    // Update Progress Chart
+                    const ctx = document.getElementById('pregnancyProgress').getContext('2d');
+                    const antenatalVisits = parseInt(data.antenatalVisits) || 0;
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['1st Trimester', '2nd Trimester', '3rd Trimester'],
+                            datasets: [{
+                                label: 'Progress',
+                                data: [33, 66, 100].map(p => p * (antenatalVisits / 4)),
+                                borderColor: '#4ECDC4',
+                                backgroundColor: 'rgba(78, 205, 196, 0.2)',
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Progress (%)' } } },
+                            plugins: { title: { display: true, text: 'Pregnancy Progress', color: '#2E3192' } }
+                        }
+                    });
+                    document.getElementById('progressInsight').textContent = `Insight: You’ve completed ${antenatalVisits} of 4 recommended visits. Aim for 4+ for optimal care.`;
+                }
+            });
+        </script>
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition">Save</button>
+    </form>
+</div>
+{% endblock %}

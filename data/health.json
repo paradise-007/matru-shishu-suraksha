@@ -1,0 +1,17 @@
+[
+    {
+        "email": "testuser1@example.com",
+        "lastCheckup": "2025-03-01",
+        "antenatalVisits": "2",
+        "ifaTaken": true,
+        "created_at": "2025-03-22T10:00:00Z"
+    },
+    {
+        "email": "testuser2@example.com",
+        "childAge": "0-6",
+        "numChildren": "1",
+        "lastDelivery": "Institutional",
+        "vaccCard": true,
+        "created_at": "2025-03-22T10:00:00Z"
+    }
+]

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}Resources{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="resources">Resources</h2>
+    <p class="text-indigo-600 mb-4 text-center">Access vital health resources, nearby facilities, and support for maternal and child care.</p>
+
+    <!-- Reminders Toggle -->
+    <div class="mb-4">
+        <label class="flex items-center">
+            <input type="checkbox" id="reminders-toggle" class="mr-2">
+            Enable Reminders for Vaccinations and Checkups
+        </label>
+        <p class="text-xs text-gray-500 mt-1">Get notified about upcoming health events (requires login).</p>
+    </div>
+
+    <!-- Nearby Health Facilities -->
+    <div class="mb-6">
+        <h3 class="text-lg font-semibold text-indigo-700 mb-2">Nearby Health Facilities</h3>
+        <button onclick="findNearbyFacilities()" class="btn-secondary w-full text-white p-3 rounded-lg transition mb-2">Find Nearby Hospitals</button>
+        <div id="facilities" class="bg-indigo-50 p-4 rounded-lg text-indigo-800" style="display: none;"></div>
+    </div>
+
+    <!-- Educational Content -->
+    <div id="educational-content" class="mb-6 bg-indigo-50 p-4 rounded-lg text-indigo-700">
+        <h3 class="text-lg font-semibold mb-2">Educational Resources</h3>
+        <ul class="list-disc list-inside">
+            <li><a href="https://www.nipccd.nic.in/file/elearn/faq/fq25.pdf" target="_blank" class="underline">Nutrition Guidelines</a></li>
+            <li><a href="https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=821&lid=219" target="_blank" class="underline">Immunization Schedule</a></li>
+            <li><a href="https://nhm.gov.in/images/pdf/programmes/maternal-health/guidelines/my_safe_motherhood_booklet_english.pdf" target="_blank" class="underline">Maternal Care Tips</a></li>
+        </ul>
+    </div>
+
+    <!-- Helpline and Schemes -->
+    <div class="mb-6">
+        <p class="text-indigo-700 mb-2"><strong>Helpline:</strong> <a href="tel:104" class="underline">104</a> (National Health Helpline)</p>
+        <p class="text-indigo-700 mb-2"><strong>Emergency:</strong> <a href="tel:108" class="underline">108</a> (Ambulance Service)</p>
+    </div>
+
+    <div id="schemes" class="bg-indigo-50 p-4 rounded-lg text-indigo-800">
+        <h3 class="text-lg font-semibold mb-2">Government Schemes</h3>
+        <ul class="list-disc list-inside">
+            <li><a href="https://pmmvy.wcd.gov.in/" target="_blank" class="underline">PMMVY (Maternity Benefit)</a></li>
+            <li><a href="https://nhm.gujarat.gov.in/maternal-health1.htm" target="_blank" class="underline">Maternal Health</a></li>
+            <li><a href="https://gujhealth.gujarat.gov.in/images/pdf/chiranjeevi-yojana-details.pdf" target="_blank" class="underline">Chiranjeevi Yojana (Free Delivery)</a></li>
+            <li><a href="https://wcd.gujarat.gov.in/" target="_blank" class="underline">ICDS (Integrated Child Development)</a></li>
+        </ul>
+    </div>
+
+    <!-- Community Support -->
+    <div class="mt-6 text-center">
+        <p class="text-indigo-600">Need more help? Contact your <a href="#" onclick="window.location.href='https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=823&lid=219'; return false;" target="_blank" class="underline">ASHA Worker</a> or join our community forum!</p>
+    </div>
+</div>
+
+<script>
+    // Find Nearby Health Facilities
+    function findNearbyFacilities() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const facilitiesDiv = document.getElementById('facilities');
+                facilitiesDiv.innerHTML = 'Loading facilities...';
+                facilitiesDiv.style.display = 'block';
+
+                fetch(`/api/health/facilities?lat=${lat}&lon=${lon}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.facilities && data.facilities.length > 0) {
+                            facilitiesDiv.innerHTML = data.facilities.map(f => 
+                                `<p>${f.name} (${f.distance.toFixed(2)} km) <a href="${f.directions_url}" target="_blank">Get Directions</a></p>`
+                            ).join('');
+                        } else {
+                            facilitiesDiv.innerHTML = 'No health facilities found within 100 km. Try adjusting your location.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Facilities Error:', error);
+                        facilitiesDiv.innerHTML = `Error fetching facilities: ${error.message}`;
+                    });
+            }, error => {
+                console.error('Geolocation Error:', error);
+                document.getElementById('facilities').innerHTML = `Geolocation error: ${error.message}`;
+            });
+        } else {
+            document.getElementById('facilities').innerHTML = 'Geolocation not supported by your browser.';
+        }
+    }
+
+    // Enable Reminders (Placeholder - Integrate with backend notification system)
+    document.getElementById('reminders-toggle').addEventListener('change', function() {
+        if (this.checked) {
+            alert('Reminders enabled! You’ll be notified about vaccinations and checkups. (Feature to be implemented in settings.)');
+        } else {
+            alert('Reminders disabled.');
+        }
+    });
+</script>
+{% endblock %}

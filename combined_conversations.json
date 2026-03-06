@@ -1,0 +1,2404 @@
+{
+  "conversations": [
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How many extra calories are needed in the second trimester?"
+        },
+        {
+          "role": "bot",
+          "content": "300 extra calories daily"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What supplements prevent anemia during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "Iron and folic acid supplements"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Which fruits are recommended for pregnant women?"
+        },
+        {
+          "role": "bot",
+          "content": "bananas"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What vegetables should pregnant women eat?"
+        },
+        {
+          "role": "bot",
+          "content": "spinach"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What calcium-rich foods are recommended?"
+        },
+        {
+          "role": "bot",
+          "content": "milk and curd"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why is calcium important during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "to strengthen bones and teeth"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What fruits should pregnant women avoid?"
+        },
+        {
+          "role": "bot",
+          "content": "unripe papaya and pineapple"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why avoid certain fruits during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "due to enzymes that may cause uterine contractions"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Where can pregnant women get Vitamin D?"
+        },
+        {
+          "role": "bot",
+          "content": "from sunlight exposure or fortified foods"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Vitamin D\u00e2\u20ac\u2122s role in pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "to support calcium absorption and bone health"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Which fish provides Omega-3?"
+        },
+        {
+          "role": "bot",
+          "content": "salmon"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why limit fish intake during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "to avoid mercury"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How much water should pregnant women drink?"
+        },
+        {
+          "role": "bot",
+          "content": "2-3 liters of water daily"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why is hydration important during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "to prevent dehydration and support amniotic fluid"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What foods are iron-rich for pregnant women?"
+        },
+        {
+          "role": "bot",
+          "content": "liver and spinach"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How does iron help during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "combat fatigue and support blood volume increase"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does folic acid prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "neural tube defects"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When should folic acid be taken?"
+        },
+        {
+          "role": "bot",
+          "content": "before and during early pregnancy"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is TT1 given during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "at 12 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is TT2 administered?"
+        },
+        {
+          "role": "bot",
+          "content": "at 20 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Which vaccine is advised during flu season?"
+        },
+        {
+          "role": "bot",
+          "content": "Influenza vaccination"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What are the benefits of the influenza vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "to lower the risk of complications"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the first COVID-19 vaccine dose given?"
+        },
+        {
+          "role": "bot",
+          "content": "at 20 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the second COVID-19 dose?"
+        },
+        {
+          "role": "bot",
+          "content": "at 28 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Who should get the Hepatitis B vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "pregnant women at risk"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the second Hepatitis B dose?"
+        },
+        {
+          "role": "bot",
+          "content": "at 28 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can pregnant women get the rubella vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "no"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When should the rubella vaccine be taken?"
+        },
+        {
+          "role": "bot",
+          "content": "before conception"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is a TT booster needed?"
+        },
+        {
+          "role": "bot",
+          "content": "if the last tetanus shot was more than 3 years ago"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does the TT booster protect against?"
+        },
+        {
+          "role": "bot",
+          "content": "tetanus"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is the HPV vaccine given during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "no"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When can the HPV vaccine be taken?"
+        },
+        {
+          "role": "bot",
+          "content": "postpartum"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Who should get the pneumococcal vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "pregnant women with chronic conditions"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How many doses of pneumococcal vaccine are needed?"
+        },
+        {
+          "role": "bot",
+          "content": "one dose"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can pregnant women get the varicella vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "no"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When can the varicella vaccine be administered?"
+        },
+        {
+          "role": "bot",
+          "content": "after delivery"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the DPT vaccine scheduled?"
+        },
+        {
+          "role": "bot",
+          "content": "at 6, 10, and 14 weeks after birth"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What diseases does DPT prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "diphtheria, pertussis, and tetanus"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the first measles vaccine given?"
+        },
+        {
+          "role": "bot",
+          "content": "at 9 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the measles booster due?"
+        },
+        {
+          "role": "bot",
+          "content": "at 16-24 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does the MMR vaccine protect against?"
+        },
+        {
+          "role": "bot",
+          "content": "measles, mumps, and rubella"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the MMR booster given?"
+        },
+        {
+          "role": "bot",
+          "content": "at 15-18 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the rotavirus vaccine given?"
+        },
+        {
+          "role": "bot",
+          "content": "at 6, 10, and 14 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does rotavirus vaccine prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "severe diarrhea"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the Hib vaccine given?"
+        },
+        {
+          "role": "bot",
+          "content": "at 6, 10, and 14 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What disease does Hib prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "meningitis"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the first polio vaccine given?"
+        },
+        {
+          "role": "bot",
+          "content": "at birth"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the polio booster due?"
+        },
+        {
+          "role": "bot",
+          "content": "at 16-24 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the first hepatitis B vaccine given?"
+        },
+        {
+          "role": "bot",
+          "content": "at birth"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does hepatitis B vaccine prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "liver disease"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the PCV vaccine scheduled?"
+        },
+        {
+          "role": "bot",
+          "content": "at 6 weeks, 14 weeks, and 9 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does PCV prevent?"
+        },
+        {
+          "role": "bot",
+          "content": "pneumococcal diseases like pneumonia"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What should I do if a vaccine dose is missed?"
+        },
+        {
+          "role": "bot",
+          "content": "consult a health worker to reschedule"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why is timely vaccination important?"
+        },
+        {
+          "role": "bot",
+          "content": "delays can affect immunity levels"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How often are checkups before 28 weeks?"
+        },
+        {
+          "role": "bot",
+          "content": "monthly"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How often after 36 weeks?"
+        },
+        {
+          "role": "bot",
+          "content": "weekly"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the first ultrasound done?"
+        },
+        {
+          "role": "bot",
+          "content": "at 8-12 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is checked at 18-20 weeks?"
+        },
+        {
+          "role": "bot",
+          "content": "anomaly screening"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What are danger signs in pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "severe headache, vision changes, and vaginal bleeding"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What should I do if I see danger signs?"
+        },
+        {
+          "role": "bot",
+          "content": "require immediate medical attention"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is postnatal depression?"
+        },
+        {
+          "role": "bot",
+          "content": "symptoms like sadness and sleep issues"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When might postnatal depression start?"
+        },
+        {
+          "role": "bot",
+          "content": "within weeks after delivery"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does a blood pressure check detect?"
+        },
+        {
+          "role": "bot",
+          "content": "preeclampsia"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What are preeclampsia symptoms?"
+        },
+        {
+          "role": "bot",
+          "content": "swelling and protein in urine"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How much weight gain is normal in the first trimester?"
+        },
+        {
+          "role": "bot",
+          "content": "0.5-1 kg per month"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why monitor weight during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "to ensure healthy development"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why do pregnant women urinate frequently?"
+        },
+        {
+          "role": "bot",
+          "content": "due to pressure on the bladder"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When should I see a doctor for urination?"
+        },
+        {
+          "role": "bot",
+          "content": "if persistent pain occurs"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is glucose screening done?"
+        },
+        {
+          "role": "bot",
+          "content": "between 24-28 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does glucose screening check for?"
+        },
+        {
+          "role": "bot",
+          "content": "gestational diabetes"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How long should I breastfeed exclusively?"
+        },
+        {
+          "role": "bot",
+          "content": "for the first six months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What foods can I introduce after six months?"
+        },
+        {
+          "role": "bot",
+          "content": "mashed vegetables and cereals"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What cereals should I give after six months?"
+        },
+        {
+          "role": "bot",
+          "content": "iron-fortified cereals"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why avoid honey before one year?"
+        },
+        {
+          "role": "bot",
+          "content": "to prevent botulism risk"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When should weaning start?"
+        },
+        {
+          "role": "bot",
+          "content": "at 6 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is a good first weaning food?"
+        },
+        {
+          "role": "bot",
+          "content": "rice porridge"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When does a child sit without support?"
+        },
+        {
+          "role": "bot",
+          "content": "by 6-8 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does sitting indicate?"
+        },
+        {
+          "role": "bot",
+          "content": "readiness for solid foods"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When can children start drinking water?"
+        },
+        {
+          "role": "bot",
+          "content": "after 6 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How should water be given initially?"
+        },
+        {
+          "role": "bot",
+          "content": "starting with small sips"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is formula milk used?"
+        },
+        {
+          "role": "bot",
+          "content": "if breastfeeding isn\u00e2\u20ac\u2122t possible"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Who should I consult for formula?"
+        },
+        {
+          "role": "bot",
+          "content": "a pediatrician"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When can pureed meats be introduced?"
+        },
+        {
+          "role": "bot",
+          "content": "after 8 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How should meats be prepared for babies?"
+        },
+        {
+          "role": "bot",
+          "content": "well-cooked and free of salt"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When can children eat mangoes?"
+        },
+        {
+          "role": "bot",
+          "content": "by 9 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Why eat fruits like mangoes?"
+        },
+        {
+          "role": "bot",
+          "content": "to boost vitamin intake and taste development"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When does postnatal depression appear?"
+        },
+        {
+          "role": "bot",
+          "content": "within 4-6 weeks after delivery"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What are symptoms of postnatal depression?"
+        },
+        {
+          "role": "bot",
+          "content": "persistent sadness and loss of appetite"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When do children say their first words?"
+        },
+        {
+          "role": "bot",
+          "content": "between 10-14 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does first words indicate?"
+        },
+        {
+          "role": "bot",
+          "content": "language development milestone"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is a high fever in children?"
+        },
+        {
+          "role": "bot",
+          "content": "above 100.4\u00c2\u00b0F"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What should I do for emergency signs?"
+        },
+        {
+          "role": "bot",
+          "content": "needing immediate hospital care"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is postpartum hemorrhage?"
+        },
+        {
+          "role": "bot",
+          "content": "heavy bleeding"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What to do if postpartum hemorrhage occurs?"
+        },
+        {
+          "role": "bot",
+          "content": "requiring urgent medical intervention"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When does a child walk alone?"
+        },
+        {
+          "role": "bot",
+          "content": "between 9-18 months"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What affects walking alone?"
+        },
+        {
+          "role": "bot",
+          "content": "physical development and practice"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What might severe abdominal pain indicate?"
+        },
+        {
+          "role": "bot",
+          "content": "preeclampsia or ectopic pregnancy"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What should I do if I have severe pain?"
+        },
+        {
+          "role": "bot",
+          "content": "needing immediate attention"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When does a baby\u00e2\u20ac\u2122s first smile appear?"
+        },
+        {
+          "role": "bot",
+          "content": "around 6-8 weeks"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does the first smile indicate?"
+        },
+        {
+          "role": "bot",
+          "content": "emotional connection"
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is fish safe during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "Fish like salmon is safe in moderation for omega-3s, but limit intake to avoid mercury. Avoid raw fish. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about calcium?"
+        },
+        {
+          "role": "bot",
+          "content": "Calcium from milk, curd, and leafy greens is vital for your bones and baby\u00e2\u20ac\u2122s. Aim for 1000 mg daily as per ICMR."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat papaya?"
+        },
+        {
+          "role": "bot",
+          "content": "Unripe papaya should be avoided due to contraction risks. Ripe papaya is okay in small amounts. Check with your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What vitamins do I need?"
+        },
+        {
+          "role": "bot",
+          "content": "You need folic acid, iron, and vitamin D. Take supplements as prescribed by your health worker."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is coffee safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Limit coffee to 1-2 cups daily to avoid affecting the baby. Avoid if advised by your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about iron?"
+        },
+        {
+          "role": "bot",
+          "content": "Iron from spinach and liver helps prevent anemia. Take supplements if prescribed by your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat spicy food?"
+        },
+        {
+          "role": "bot",
+          "content": "Spicy food is generally safe but may cause heartburn. Eat in moderation and consult your doctor if issues arise."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How much water should I drink?"
+        },
+        {
+          "role": "bot",
+          "content": "Drink 2-3 liters of water daily to stay hydrated and support amniotic fluid, per ICMR guidelines."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Are nuts safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Nuts like almonds are safe and provide healthy fats. Avoid if you have allergies, and consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about sugar?"
+        },
+        {
+          "role": "bot",
+          "content": "Limit sugar to prevent gestational diabetes. Opt for natural sugars from fruits instead."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat eggs?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, well-cooked eggs are safe and provide protein. Avoid raw eggs to prevent salmonella."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about dairy?"
+        },
+        {
+          "role": "bot",
+          "content": "Dairy like milk and yogurt is essential for calcium. Choose low-fat options if needed."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is rice okay?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, rice is a good carbohydrate source. Pair with vegetables for a balanced meal."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat street food?"
+        },
+        {
+          "role": "bot",
+          "content": "Avoid street food due to hygiene risks. Opt for home-cooked meals to stay safe."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about vitamin C?"
+        },
+        {
+          "role": "bot",
+          "content": "Vitamin C from oranges and tomatoes boosts immunity. Aim for 85 mg daily during pregnancy."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is ghee safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Ghee is safe in moderation for energy, but avoid excess to prevent weight gain. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat lentils?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, lentils are a great protein source. Cook them well to aid digestion."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about salt?"
+        },
+        {
+          "role": "bot",
+          "content": "Use salt in moderation to avoid swelling. Check with your doctor if you have high blood pressure."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is juice good?"
+        },
+        {
+          "role": "bot",
+          "content": "Fresh juice is good for vitamins, but avoid sugary ones. Limit to 1 glass daily."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I eat sweets?"
+        },
+        {
+          "role": "bot",
+          "content": "Limit sweets to prevent weight gain and diabetes. Opt for fruit-based desserts."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is flu shot needed?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, the flu shot is recommended during flu season to reduce complications. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is COVID-19 dose 2?"
+        },
+        {
+          "role": "bot",
+          "content": "The second COVID-19 dose is at 28 weeks, per Indian guidelines. Confirm with your health worker."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is TT safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, TT vaccines (TT1 at 12 weeks, TT2 at 20 weeks) are safe and protect against tetanus."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about hepatitis B?"
+        },
+        {
+          "role": "bot",
+          "content": "Hepatitis B is for at-risk women, with doses at 20 and 28 weeks. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is rubella vaccine okay?"
+        },
+        {
+          "role": "bot",
+          "content": "No, it\u00e2\u20ac\u2122s not given during pregnancy. Take it before conception or postpartum."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is TT booster due?"
+        },
+        {
+          "role": "bot",
+          "content": "A TT booster is due if your last shot was over 3 years ago. Check with your provider."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is HPV safe during pregnancy?"
+        },
+        {
+          "role": "bot",
+          "content": "No, HPV is not recommended during pregnancy. Consider it postpartum."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about pneumococcal?"
+        },
+        {
+          "role": "bot",
+          "content": "It\u00e2\u20ac\u2122s for women with chronic conditions, with one dose during pregnancy if needed."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is varicella safe?"
+        },
+        {
+          "role": "bot",
+          "content": "No, varicella is contraindicated during pregnancy. Take it after delivery."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is influenza shot given?"
+        },
+        {
+          "role": "bot",
+          "content": "The influenza shot is given during flu season, ideally before peak months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is COVID-19 vaccine necessary?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, it\u00e2\u20ac\u2122s safe and recommended at 20 and 28 weeks. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I miss TT1?"
+        },
+        {
+          "role": "bot",
+          "content": "Contact your health worker to reschedule TT1 as soon as possible."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is booster safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, a booster is safe if needed, following the 3-year rule. Confirm with your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is hepatitis B dose 2?"
+        },
+        {
+          "role": "bot",
+          "content": "The second hepatitis B dose is at 28 weeks for at-risk women."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is flu shot free?"
+        },
+        {
+          "role": "bot",
+          "content": "It may be free under government programs. Check with your local health center."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about rubella postpartum?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, the rubella vaccine can be given safely after delivery."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is HPV postpartum okay?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, HPV vaccination is recommended postpartum to prevent cervical cancer."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is pneumococcal due?"
+        },
+        {
+          "role": "bot",
+          "content": "It\u00e2\u20ac\u2122s given once during pregnancy for chronic conditions, as advised."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is varicella postpartum safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, the varicella vaccine is safe and recommended after delivery."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I miss COVID-19 dose?"
+        },
+        {
+          "role": "bot",
+          "content": "Contact your health worker to reschedule your COVID-19 dose promptly."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is MMR?"
+        },
+        {
+          "role": "bot",
+          "content": "MMR is given at 9 months with a booster at 15-18 months per India\u00e2\u20ac\u2122s schedule."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I miss a dose?"
+        },
+        {
+          "role": "bot",
+          "content": "If you miss a dose, consult a health worker to reschedule and maintain immunity."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is DPT due?"
+        },
+        {
+          "role": "bot",
+          "content": "DPT is due at 6, 10, and 14 weeks after birth. Follow up with your provider."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about rotavirus?"
+        },
+        {
+          "role": "bot",
+          "content": "Rotavirus is given at 6, 10, and 14 weeks, with a last dose by 8 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is Hib vaccine?"
+        },
+        {
+          "role": "bot",
+          "content": "Hib is administered at 6, 10, and 14 weeks to prevent meningitis."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about polio?"
+        },
+        {
+          "role": "bot",
+          "content": "Polio (OPV) is given at birth, 6, 10, 14 weeks, and a booster at 16-24 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is hepatitis B for baby?"
+        },
+        {
+          "role": "bot",
+          "content": "Hepatitis B starts at birth, then at 6 and 14 weeks."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is PCV schedule?"
+        },
+        {
+          "role": "bot",
+          "content": "PCV is given at 6 weeks, 14 weeks, and 9 months to prevent pneumonia."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is measles vaccine safe?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, the measles vaccine at 9 months is safe and effective."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is MMR booster?"
+        },
+        {
+          "role": "bot",
+          "content": "The MMR booster is due at 15-18 months as per the schedule."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if my child refuses a shot?"
+        },
+        {
+          "role": "bot",
+          "content": "Calm your child and try again, or consult a health worker for assistance."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is rotavirus last dose?"
+        },
+        {
+          "role": "bot",
+          "content": "The last rotavirus dose should be by 8 months of age."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is Hib important?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, Hib prevents serious infections like meningitis, so it\u00e2\u20ac\u2122s crucial."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is polio booster?"
+        },
+        {
+          "role": "bot",
+          "content": "The polio booster is at 16-24 months to ensure immunity."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about hepatitis B booster?"
+        },
+        {
+          "role": "bot",
+          "content": "No routine booster is needed for hepatitis B after the infant series."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is PCV free?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, PCV is often free under government programs. Check locally."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is measles booster?"
+        },
+        {
+          "role": "bot",
+          "content": "The measles booster is part of MMR at 15-18 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if DPT is delayed?"
+        },
+        {
+          "role": "bot",
+          "content": "Contact a health worker to reschedule DPT to maintain protection."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is rotavirus necessary?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, it\u00e2\u20ac\u2122s necessary to prevent severe diarrhea in infants."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is Hib booster?"
+        },
+        {
+          "role": "bot",
+          "content": "There\u00e2\u20ac\u2122s no routine Hib booster; the series ends at 14 weeks."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "How often for checkups?"
+        },
+        {
+          "role": "bot",
+          "content": "Checkups are monthly until 28 weeks, biweekly to 36 weeks, then weekly."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What are danger signs?"
+        },
+        {
+          "role": "bot",
+          "content": "Danger signs include severe headache, bleeding, or vision changes. Seek help immediately."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is ultrasound done?"
+        },
+        {
+          "role": "bot",
+          "content": "Ultrasounds are at 8-12 weeks and 18-20 weeks for screening."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about blood pressure?"
+        },
+        {
+          "role": "bot",
+          "content": "Blood pressure checks detect preeclampsia. Regular monitoring is key."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is weight gain normal?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, 0.5-1 kg per month in the first trimester is normal. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I urinate often?"
+        },
+        {
+          "role": "bot",
+          "content": "Frequent urination is normal due to bladder pressure. See a doctor if painful."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is glucose test?"
+        },
+        {
+          "role": "bot",
+          "content": "Glucose screening is between 24-28 weeks to check for diabetes."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about swelling?"
+        },
+        {
+          "role": "bot",
+          "content": "Mild swelling is normal, but sudden swelling may indicate preeclampsia. Consult a doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is dizziness common?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, dizziness can occur due to low blood pressure. Rest and hydrate; see a doctor if severe."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about heartburn?"
+        },
+        {
+          "role": "bot",
+          "content": "Heartburn is common due to hormonal changes. Eat small meals and consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is the next visit?"
+        },
+        {
+          "role": "bot",
+          "content": "It depends on your stage\u00e2\u20ac\u201dmonthly until 28 weeks, then adjust with your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I feel pain?"
+        },
+        {
+          "role": "bot",
+          "content": "Severe pain may indicate issues like preeclampsia. Seek medical help immediately."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is bleeding normal?"
+        },
+        {
+          "role": "bot",
+          "content": "Light spotting can be normal, but heavy bleeding is a danger sign. See a doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about fatigue?"
+        },
+        {
+          "role": "bot",
+          "content": "Fatigue is common, especially early on. Rest and eat iron-rich foods."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is postnatal check?"
+        },
+        {
+          "role": "bot",
+          "content": "A postnatal check is recommended within 6 weeks after delivery."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is postnatal depression?"
+        },
+        {
+          "role": "bot",
+          "content": "It\u00e2\u20ac\u2122s sadness or sleep issues after delivery. Seek help if it persists."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is stress normal?"
+        },
+        {
+          "role": "bot",
+          "content": "Mild stress is normal, but chronic stress needs management with a doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about back pain?"
+        },
+        {
+          "role": "bot",
+          "content": "Back pain is common due to weight gain. Rest and consult if severe."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When is anemia checked?"
+        },
+        {
+          "role": "bot",
+          "content": "Anemia is checked at every prenatal visit, starting from the first trimester."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if I gain too much weight?"
+        },
+        {
+          "role": "bot",
+          "content": "Excess weight gain may need dietary adjustment. Consult your doctor."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When to start solids?"
+        },
+        {
+          "role": "bot",
+          "content": "Start solids at 6 months with mashed vegetables or cereals, per WHO guidelines."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is formula okay?"
+        },
+        {
+          "role": "bot",
+          "content": "Formula is okay if breastfeeding isn\u00e2\u20ac\u2122t possible. Consult a pediatrician for the right type."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What foods at 6 months?"
+        },
+        {
+          "role": "bot",
+          "content": "At 6 months, offer iron-fortified cereals and pureed fruits like apples."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I give water?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, introduce water in small sips after 6 months for hydration."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about meats?"
+        },
+        {
+          "role": "bot",
+          "content": "Pureed meats can start after 8 months, well-cooked and salt-free."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Are fruits good?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, fruits like mangoes are good by 9 months for vitamins."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I use honey?"
+        },
+        {
+          "role": "bot",
+          "content": "No, avoid honey until one year to prevent botulism risk."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about rice?"
+        },
+        {
+          "role": "bot",
+          "content": "Rice porridge is a good first food at 6 months, easy to digest."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is juice okay?"
+        },
+        {
+          "role": "bot",
+          "content": "Fresh juice is okay in small amounts after 6 months, avoiding sugar."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if my child refuses food?"
+        },
+        {
+          "role": "bot",
+          "content": "Try different textures or consult a pediatrician if refusal persists."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When to introduce eggs?"
+        },
+        {
+          "role": "bot",
+          "content": "Introduce well-cooked eggs after 9 months, avoiding raw ones."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about dairy?"
+        },
+        {
+          "role": "bot",
+          "content": "Dairy like yogurt can start at 6 months for calcium."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I give salt?"
+        },
+        {
+          "role": "bot",
+          "content": "No, avoid salt until 12 months to protect kidneys."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about vegetables?"
+        },
+        {
+          "role": "bot",
+          "content": "Mashed vegetables like carrots are ideal from 6 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is breastfeeding enough?"
+        },
+        {
+          "role": "bot",
+          "content": "Yes, until 6 months, then add solids while continuing."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What if my child is underweight?"
+        },
+        {
+          "role": "bot",
+          "content": "Consult a pediatrician to adjust diet or check health."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "When to stop breastfeeding?"
+        },
+        {
+          "role": "bot",
+          "content": "Continue up to 2 years, per WHO, with solids after 6 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Can I give nuts?"
+        },
+        {
+          "role": "bot",
+          "content": "Avoid whole nuts until 5 years; use ground nuts after 1 year."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What about snacks?"
+        },
+        {
+          "role": "bot",
+          "content": "Offer healthy snacks like fruit puree after 6 months."
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is sugar okay?"
+        },
+        {
+          "role": "bot",
+          "content": "Avoid added sugar until 2 years to prevent health issues."
+        }
+      ]
+    }
+  ]
+}

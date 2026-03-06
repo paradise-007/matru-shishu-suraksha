@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matru-Shishu Suraksha - {% block title %}{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' /> <!-- FullCalendar CSS -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        .bg-medical {
+            background: linear-gradient(135deg, #e6f0fa 0%, #c9e6f2 100%);
+        }
+        .navbar {
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+            border-bottom: 4px solid #27ae60;
+        }
+        .sidebar {
+            background: #f8fafc;
+            border-right: 2px solid #3498db;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+        }
+        .btn-secondary {
+            background: #7f8c8d;
+            border-radius: 8px;
+        }
+        .btn-secondary:hover {
+            background: #6c757d;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+        #vaccinationCalendar {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-medical min-h-screen flex flex-col font-sans">
+    <nav class="navbar p-4 text-white shadow-lg flex items-center justify-between">
+        <div class="flex items-center">
+            <i class="fas fa-heartbeat heartbeat text-2xl mr-2 text-red-500"></i>
+            <a href="{{ url_for('dashboard') }}" class="text-2xl font-bold">Matru-Shishu Suraksha</a>
+        </div>
+        <div class="flex space-x-4">
+            <button onclick="translatePage('en')" class="bg-white text-black px-3 py-1 rounded-full hover:bg-3498db hover:text-white transition">English</button>
+            <button onclick="translatePage('gu')" class="bg-white text-black px-3 py-1 rounded-full hover:bg-3498db hover:text-white transition">Gujarati</button>
+        </div>
+    </nav>
+
+    <div class="flex flex-1">
+        <aside class="sidebar w-64 p-6 text-gray-800 hidden md:block overflow-y-auto h-screen">
+            <ul class="space-y-4">
+                <li><a href="{{ url_for('dashboard') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-tachometer-alt"></i><span data-i18n="dashboard">Dashboard</span></a></li>
+                <li><a href="{{ url_for('onboarding') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-user-plus"></i><span data-i18n="onboarding">Onboarding</span></a></li>
+                <li><a href="{{ url_for('pregnancy_setup') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-baby"></i><span data-i18n="pregnancySetup">Pregnancy Setup</span></a></li>
+                <li><a href="{{ url_for('mother_setup') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-female"></i><span data-i18n="motherSetup">Mother Setup</span></a></li>
+                <li><a href="{{ url_for('caregiver_setup') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-users"></i><span data-i18n="caregiverSetup">Caregiver Setup</span></a></li>
+                <li><a href="{{ url_for('pregnancy_health') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-heartbeat"></i><span data-i18n="pregnancyHealth">Pregnancy Health</span></a></li>
+                <li><a href="{{ url_for('child_health') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-child"></i><span data-i18n="childHealth">Child Health</span></a></li>
+                <li><a href="{{ url_for('health_assessment') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-stethoscope"></i><span data-i18n="healthAssessment">Health Assessment</span></a></li>
+                <li><a href="{{ url_for('resources') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-book-medical"></i><span data-i18n="resources">Resources</span></a></li>
+                <li><a href="{{ url_for('progress') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-chart-line"></i><span data-i18n="progress">Progress Tracking</span></a></li>
+                <li><a href="{{ url_for('logout') }}" class="flex items-center space-x-2 hover:text-27ae60"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="flex-1 p-6">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="bg-{{ 'red' if category == 'error' else 'green' }}-100 text-{{ 'red' if category == 'error' else 'green' }}-800 p-4 rounded-lg mb-6 text-center shadow-md">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script> <!-- FullCalendar JS -->
+    <script>
+        // Function to apply translations to elements with data-i18n attributes
+        function applyTranslations(translations) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[key]) element.textContent = translations[key];
+            });
+        }
+    
+        // Flag to ensure initialization runs only once
+        let isTranslationInitialized = false;
+    
+        // Initialize translations on page load
+        function initializeTranslations() {
+            if (isTranslationInitialized) return; // Prevent duplicate calls
+            isTranslationInitialized = true;
+    
+            const savedLang = sessionStorage.getItem('language') || 'en';
+            fetch(`/api/auth/language?lang=${savedLang}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include' // Ensure session cookies are sent
+            })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 302) {
+                        console.warn('Redirect to login detected. Ensure you are logged in.');
+                        throw new Error(`Redirect to login (Status: ${response.status})`);
+                    }
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Initial translation response:', data);
+                if (data.error) {
+                    console.error('Translation error:', data.error);
+                    alert('Initial translation failed. Using default text. Check console for details.');
+                } else {
+                    applyTranslations(data.translations);
+                    sessionStorage.setItem('language', data.language);
+                }
+            })
+            .catch(error => {
+                console.error('Translation fetch error:', error);
+                alert('Initial translation failed. Using default text. Check console for details.');
+            });
+        }
+    
+        // Update translatePage function
+        function translatePage(lang) {
+            fetch(`/api/auth/language?lang=${lang}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 302) {
+                        console.warn('Redirect to login detected. Ensure you are logged in.');
+                        throw new Error(`Redirect to login (Status: ${response.status})`);
+                    }
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Translation response:', data);
+                if (data.error) {
+                    console.error('Translation error:', data.error);
+                } else {
+                    applyTranslations(data.translations);
+                    sessionStorage.setItem('language', data.language);
+                }
+            })
+            .catch(error => console.error('Translation error:', error));
+        }
+    
+        // Load translations on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeTranslations);
+        } else {
+            initializeTranslations();
+        }
+    
+        // Initialize calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEls = document.querySelectorAll('#vaccinationCalendar');
+            calendarEls.forEach(calendarEl => {
+                if (calendarEl) {
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: [],
+                        eventClick: function(info) {
+                            alert('Vaccination: ' + info.event.title + ' on ' + info.event.start.toLocaleDateString());
+                        }
+                    });
+                    calendar.render();
+                }
+            });
+        });
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

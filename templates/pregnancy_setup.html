@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block title %}Pregnancy Setup{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="pregnancySetup">Pregnancy Setup</h2>
+    <form id="pregnancySetupForm" method="POST">
+        <div class="mb-4">
+            <label for="trimester" class="block text-indigo-700 font-medium mb-2" data-i18n="trimester">Trimester</label>
+            <select id="trimester" name="trimester" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="1st">1st Trimester</option>
+                <option value="2nd">2nd Trimester</option>
+                <option value="3rd">3rd Trimester</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="edd" class="block text-indigo-700 font-medium mb-2" data-i18n="edd">Expected Delivery Date</label>
+            <input type="date" id="edd" name="edd" required class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" {% if session.get('edd_set') %}disabled{% endif %}>
+            {% if session.get('edd_set') %}
+                <button type="button" id="changeEddBtn" class="mt-2 btn-primary w-full text-white p-3 rounded-lg transition" data-i18n="changeEdd">Change EDD</button>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <label for="prevPregnancies" class="block text-indigo-700 font-medium mb-2" data-i18n="prevPregnancies">Previous Pregnancies</label>
+            <select id="prevPregnancies" name="prevPregnancies" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2+</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="healthAccess" class="block text-indigo-700 font-medium mb-2" data-i18n="healthAccess">Access to Health Facility</label>
+            <select id="healthAccess" name="healthAccess" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="distance" class="block text-indigo-700 font-medium mb-2" data-i18n="distance">Distance to Facility (km)</label>
+            <input type="number" id="distance" name="distance" placeholder="Distance (km)" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+        <div class="mb-6">
+            <label for="ashaRegistered" class="block text-indigo-700 font-medium mb-2" data-i18n="ashaRegistered">Registered with ASHA</label>
+            <select id="ashaRegistered" name="ashaRegistered" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition" data-i18n="save">Save</button>
+    </form>
+
+    <!-- Pregnancy Timeline and Vaccination Schedule -->
+    <div class="mt-8">
+        <h3 class="text-2xl font-semibold text-indigo-800 mb-4" data-i18n="vaccinationSchedule">Pregnancy Timeline & Vaccination Schedule</h3>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h4 class="text-xl font-medium text-indigo-700 mb-2">Pregnancy Timeline</h4>
+            <ul id="pregnancyTimeline" class="list-disc pl-5 text-indigo-600 mb-4">
+                {% if vaccination_schedule.pregnancy_timeline %}
+                    {% for week, dates in vaccination_schedule.pregnancy_timeline.items() %}
+                        <li>{{ week }}: {{ dates.start }} - {{ dates.end }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No timeline available. Set an EDD to generate.</li>
+                {% endif %}
+            </ul>
+
+            <h4 class="text-xl font-medium text-indigo-700 mb-2">Maternal Vaccinations</h4>
+            <ul id="maternalVaccinations" class="list-disc pl-5 text-indigo-600 mb-4">
+                {% if vaccination_schedule.maternal_vaccinations %}
+                    {% for vaccine, date in vaccination_schedule.maternal_vaccinations.items() %}
+                        <li><strong>{{ vaccine }}:</strong> {{ date }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No maternal vaccinations scheduled. Set an EDD to generate.</li>
+                {% endif %}
+            </ul>
+
+            <h4 class="text-xl font-medium text-indigo-700 mb-2">Child Vaccinations</h4>
+            <ul id="childVaccinations" class="list-disc pl-5 text-indigo-600">
+                {% if vaccination_schedule.child_vaccinations %}
+                    {% for stage, date in vaccination_schedule.child_vaccinations.items() %}
+                        <li><strong>{{ stage }}:</strong> {{ date }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No child vaccinations scheduled. Set an EDD to generate.</li>
+                {% endif %}
+            </ul>
+
+            <p class="text-sm text-indigo-600 mt-2" data-i18n="vaccinationNote">Note: Schedule is based on India's Universal Immunization Programme. Consult your health worker for updates.</p>
+        </div>
+        <!-- Calendar Section -->
+        <div class="mt-6">
+            <h4 class="text-xl font-medium text-indigo-700 mb-2" data-i18n="vaccinationCalendar">Vaccination Calendar</h4>
+            <div id="vaccinationCalendar"></div>
+        </div>
+    </div>
+    <button type="button" id="syncGoogleCalendar" class="btn-primary w-full text-white p-3 rounded-lg mt-4" data-i18n="syncGoogleCalendar">Sync with Google Calendar</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize FullCalendar
+            var calendarEl = document.getElementById('vaccinationCalendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: {{ vaccination_schedule.calendar_events|tojson|safe if vaccination_schedule.calendar_events else '[]'|tojson|safe }},
+                eventClick: function(info) {
+                    alert('Vaccination: ' + info.event.title + ' on ' + info.event.start.toLocaleDateString());
+                }
+            });
+            calendar.render();
+
+            // Handle Form Submission
+            document.getElementById('pregnancySetupForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(document.getElementById('pregnancySetupForm'));
+                const data = Object.fromEntries(formData.entries());
+                console.log('Form data submitted:', data);
+
+                if (sessionStorage.getItem('edd_set') && !document.getElementById('changeEddBtn')?.clicked) {
+                    alert('EDD cannot be edited. Use the "Change EDD" button to update.');
+                    return;
+                }
+
+                const response = await fetch('/pregnancy_setup', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                console.log('Pregnancy setup response:', result);
+                if (result.msg.includes('successfully')) {
+                    const schedule = result.vaccination_schedule || {{ vaccination_schedule|tojson|safe }};
+                    const pregnancyTimeline = document.getElementById('pregnancyTimeline');
+                    const maternalVaccinations = document.getElementById('maternalVaccinations');
+                    const childVaccinations = document.getElementById('childVaccinations');
+
+                    if (pregnancyTimeline && maternalVaccinations && childVaccinations) {
+                        pregnancyTimeline.innerHTML = Object.entries(schedule.pregnancy_timeline || {})
+                            .map(([week, dates]) => `<li>${week}: ${dates.start} - ${dates.end}</li>`)
+                            .join('');
+                        maternalVaccinations.innerHTML = Object.entries(schedule.maternal_vaccinations || {})
+                            .map(([vaccine, date]) => `<li><strong>${vaccine}:</strong> ${new Date(date).toLocaleDateString()}</li>`)
+                            .join('');
+                        childVaccinations.innerHTML = Object.entries(schedule.child_vaccinations || {})
+                            .map(([stage, date]) => `<li><strong>${stage}:</strong> ${new Date(date).toLocaleDateString()}</li>`)
+                            .join('');
+
+                        // Update Calendar
+                        calendar.removeAllEvents();
+                        schedule.calendar_events.forEach(event => {
+                            calendar.addEvent(event);
+                        });
+                    }
+                    if (!sessionStorage.getItem('edd_set')) {
+                        sessionStorage.setItem('edd_set', 'true');
+                    }
+                    window.location.href = result.redirect || '/pregnancy_setup';
+                } else {
+                    alert(result.msg || 'Error saving data.');
+                }
+            });
+
+            // Handle EDD Change
+            document.getElementById('changeEddBtn')?.addEventListener('click', () => {
+                if (confirm('Are you sure you want to change the EDD? This will update your vaccination schedule.')) {
+                    document.getElementById('edd').disabled = false;
+                    sessionStorage.removeItem('edd_set');
+                    document.getElementById('changeEddBtn').style.display = 'none';
+                }
+            });
+        });
+
+        // Prevent form submission if EDD is disabled and change button not clicked
+        document.getElementById('pregnancySetupForm').addEventListener('submit', function(e) {
+            if (document.getElementById('edd').disabled && !document.getElementById('changeEddBtn')?.clicked) {
+                e.preventDefault();
+                alert('EDD cannot be edited. Use the "Change EDD" button to update.');
+            }
+        });
+
+        // Google Calendar Sync
+        document.getElementById('syncGoogleCalendar')?.addEventListener('click', async () => {
+            const schedule = {{ vaccination_schedule|tojson|safe }} || {};
+            const response = await fetch('/sync_google_calendar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email: '{{ session.get("email") }}', schedule: schedule })
+            });
+            const result = await response.json();
+            console.log('Sync response:', result); 
+            if (result.msg && result.msg.toLowerCase().includes('success')) {
+                alert('Vaccination schedule synced with Google Calendar!');
+            } else {
+                alert('Sync failed. Please try again. Error: ' + (result.msg || 'Unknown error'));
+            }
+        });
+    </script>
+</div>
+{% endblock %}

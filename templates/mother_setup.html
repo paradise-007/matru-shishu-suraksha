@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block title %}Mother Setup{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg card">
+    <h2 class="text-3xl font-semibold text-indigo-800 mb-6 text-center" data-i18n="motherSetup">Mother Setup</h2>
+    <p class="text-indigo-600 mb-4 text-center">Set up your profile to track maternal and child health under Matru-Shishu Suraksha.</p>
+
+    <form method="POST" id="motherForm">
+        <!-- Child Age -->
+        <div class="mb-4">
+            <label for="childAge" class="block text-indigo-700 font-medium mb-2">Child Age <span class="text-xs text-gray-500">(For health milestone tracking)</span></label>
+            <select id="childAge" name="childAge" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select Age</option>
+                <option value="0-6">0-6 months</option>
+                <option value="6-23">6-23 months</option>
+                <option value="24-59">24-59 months</option>
+            </select>
+        </div>
+
+        <!-- Number of Children -->
+        <div class="mb-4">
+            <label for="numChildren" class="block text-indigo-700 font-medium mb-2">Number of Children <span class="text-xs text-gray-500">(Under your care)</span></label>
+            <input type="number" id="numChildren" name="numChildren" placeholder="Number of children" min="1" required class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+
+        <!-- Trimester (Maternal Health) -->
+        <div class="mb-4">
+            <label for="trimester" class="block text-indigo-700 font-medium mb-2">Current Trimester <span class="text-xs text-gray-500">(If pregnant)</span></label>
+            <select id="trimester" name="trimester" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                <option value="">Not Pregnant/NA</option>
+                <option value="1">1st Trimester</option>
+                <option value="2">2nd Trimester</option>
+                <option value="3">3rd Trimester</option>
+            </select>
+        </div>
+
+        <!-- Last Delivery Location -->
+        <div class="mb-4">
+            <label for="lastDelivery" class="block text-indigo-700 font-medium mb-2">Last Delivery Location <span class="text-xs text-gray-500">(For health access)</span></label>
+            <select id="lastDelivery" name="lastDelivery" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select Location</option>
+                <option value="Home">Home</option>
+                <option value="Institutional">Institutional (Hospital/Clinic)</option>
+            </select>
+        </div>
+
+        <!-- Antenatal Care Visits -->
+        <div class="mb-4">
+            <label for="antenatalVisits" class="block text-indigo-700 font-medium mb-2">Number of Antenatal Visits <span class="text-xs text-gray-500">(If pregnant, aim for 4+)</span></label>
+            <input type="number" id="antenatalVisits" name="antenatalVisits" placeholder="Number of visits" min="0" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+        </div>
+
+        <!-- Vaccination Card Availability -->
+        <div class="mb-4">
+            <label for="vaccCard" class="block text-indigo-700 font-medium mb-2">Vaccination Card Available <span class="text-xs text-gray-500">(For child immunization records)</span></label>
+            <select id="vaccCard" name="vaccCard" class="w-full p-3 border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none" required>
+                <option value="">Select</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <!-- Nearby Facilities Button -->
+        <div class="mb-6 text-center">
+            <button type="button" onclick="findNearbyFacilities()" class="btn-secondary w-full text-white p-3 rounded-lg transition">Find Nearby Health Facilities</button>
+            <div id="facilities" class="bg-indigo-50 p-4 rounded-lg mt-2 text-indigo-800" style="display: none;"></div>
+        </div>
+
+        <button type="submit" class="btn-primary w-full text-white p-3 rounded-lg transition">Save</button>
+    </form>
+
+    <div id="save-confirmation" class="mt-4 text-center text-green-600 hidden">Profile saved successfully!</div>
+</div>
+
+<script>
+    // Find Nearby Health Facilities
+    function findNearbyFacilities() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const facilitiesDiv = document.getElementById('facilities');
+                facilitiesDiv.innerHTML = 'Loading facilities...';
+                facilitiesDiv.style.display = 'block';
+
+                fetch(`/api/health/facilities?lat=${lat}&lon=${lon}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.facilities && data.facilities.length > 0) {
+                            facilitiesDiv.innerHTML = data.facilities.map(f => 
+                                `<p>${f.name} (${f.distance.toFixed(2)} km) <a href="${f.directions_url}" target="_blank">Get Directions</a></p>`
+                            ).join('');
+                        } else {
+                            facilitiesDiv.innerHTML = 'No health facilities found within 100 km. Try adjusting your location.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Facilities Error:', error);
+                        facilitiesDiv.innerHTML = `Error fetching facilities: ${error.message}`;
+                    });
+            }, error => {
+                console.error('Geolocation Error:', error);
+                document.getElementById('facilities').innerHTML = `Geolocation error: ${error.message}`;
+            });
+        } else {
+            document.getElementById('facilities').innerHTML = 'Geolocation not supported by your browser.';
+        }
+    }
+
+    // Form Submission with Validation and Confirmation
+    document.getElementById('motherForm').addEventListener('submit', function(e) {
+        const childAge = document.getElementById('childAge').value;
+        const numChildren = document.getElementById('numChildren').value;
+        const lastDelivery = document.getElementById('lastDelivery').value;
+        const vaccCard = document.getElementById('vaccCard').value;
+
+        if (!childAge || !numChildren || !lastDelivery || !vaccCard) {
+            e.preventDefault();
+            alert('Please fill in all required fields (Child Age, Number of Children, Last Delivery Location, Vaccination Card).');
+        } else {
+            // Simulate save (replace with actual backend call if needed)
+            setTimeout(() => {
+                document.getElementById('save-confirmation').classList.remove('hidden');
+                setTimeout(() => document.getElementById('save-confirmation').classList.add('hidden'), 3000);
+            }, 500);
+        }
+    });
+</script>
+{% endblock %}
