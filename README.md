@@ -1,85 +1,156 @@
-Matru-Shishu Suraksha Dashboard
-Overview
-Matru-Shishu Suraksha is a web application designed to support maternal and child healthcare by providing users with tools to locate nearby medical facilities and interact with a chatbot, MamaBot, for health-related queries. The dashboard offers a user-friendly interface with features like geolocation-based facility search and real-time chatbot responses.
-Features
+# 🤱 Matru-Shishu Suraksha
 
-Find Nearby Facilities: Locate medical facilities within a 100 km radius using geolocation and display them on a Google Maps interface.
-MamaBot Chatbot: Ask health-related questions (e.g., "What should I eat in my 2nd trimester?") and receive responses from MamaBot. Supports text input (with Enter key submission) and voice input.
-Responsive Design: Built with Tailwind CSS for a modern, responsive layout that works across devices.
-User Authentication: Displays the logged-in user's email and provides a logout option.
-Interactive Map: Visualizes nearby facilities with markers using the Google Maps API.
+> **Empowering Every Mother · Protecting Every Child · Accessible Healthcare for All**
 
-Technologies Used
+Matru-Shishu Suraksha is an AI-powered maternal and child healthcare web application built to reduce maternal and infant mortality in India by making trusted health information accessible to every mother — regardless of location or literacy level.
 
-Frontend: HTML, Jinja2 (Flask templating), Tailwind CSS, JavaScript
-Backend: Flask (Python) for API endpoints (/api/chatbot/query, /api/health/facilities)
-APIs: Google Maps API for facility mapping
-Libraries: Fetch API for asynchronous requests, Navigator Geolocation API
+---
 
-Setup Instructions
-Prerequisites
+## 💡 About the Project
 
-Python 3.8+
-Flask (pip install flask)
-A Google Maps API key
-A web server with session management for authentication
+Millions of mothers in India — especially in rural and semi-urban areas — lack access to timely, reliable healthcare guidance during pregnancy, childbirth, and early childcare. **Matru-Shishu Suraksha** bridges this gap through two core features:
 
-Installation
+- 🤖 **MamaBot** — a conversational health assistant that answers questions about pregnancy nutrition, warning signs, labour, vaccines, breastfeeding, newborn care, and postpartum health in plain, friendly language.
+- 🗺️ **Facility Finder** — a location-based tool that helps users discover nearby hospitals, maternity homes, and children's clinics within a customisable search radius, displayed on an interactive map.
 
-Clone the Repository:
-git clone https://github.com/yourusername/matru-shishu-suraksha.git
-cd matru-shishu-suraksha
+The application is designed to be simple enough for first-time users, yet comprehensive enough to serve as a daily health companion throughout the pregnancy journey.
 
+---
 
-Install Dependencies:
-pip install -r requirements.txt
+## ✨ Features
 
+| Feature | Description |
+|---|---|
+| 🤖 MamaBot Chatbot | Answers maternal & child health queries using a trained Q&A dataset backed by MongoDB Atlas |
+| 🗺️ Nearby Facility Finder | Locates hospitals and clinics by coordinates using free OpenStreetMap — no API key needed |
+| 🎤 Voice Input | Browser-native speech-to-text so users can speak their questions (Chrome & Edge) |
+| 🔐 User Authentication | Session-based login to personalise the experience |
+| 📊 Smart Data Fallback | Loads from MongoDB Atlas → local JSON → built-in knowledge base, in order of availability |
+| 📱 Responsive Design | Works on mobile, tablet, and desktop |
 
-Set Up Environment Variables:Create a .env file in the project root and add your Google Maps API key:
-GOOGLE_MAPS_API_KEY=your_api_key_here
+---
 
+## 🛠️ Tech Stack
 
-Run the Application:
-python app.py
+| Layer | Technology |
+|---|---|
+| Frontend & App | [Streamlit](https://streamlit.io) (Python) |
+| Chatbot Dataset | MongoDB Atlas + local JSON (Q&A pairs) |
+| Fuzzy Matching | Python `difflib` |
+| Maps | [Folium](https://python-visualization.github.io/folium/) + OpenStreetMap |
+| Voice Input | Web Speech API (browser-native) |
+| Hosting | Streamlit Community Cloud (free tier) |
+| Backend (original) | Flask + Jinja2 |
 
-The application will be available at http://localhost:5000.
+---
 
+## 🚀 Live Demo
 
-Project Structure---////as per the git hub repositry
+> 🔗 **[Launch App →](https://your-app-link.streamlit.app)**
+> *(Replace this link with your Streamlit Cloud URL after deployment)*
+
+---
+
+## 📂 Project Structure
+
+```
 matru-shishu-suraksha/
-├── app.py                   # Flask application
-├── templates/
-│   ├── base.html            # Base template
-│   ├── dashboard.html       # Dashboard template with chatbot and map
-├── static/
-│   ├── css/                 # Tailwind CSS or custom styles
-│   ├── js/                  # Custom JavaScript (if separate)
-├── requirements.txt         # Python dependencies
-└── README.md                # This file
+├── streamlit_app.py              # Main Streamlit application
+├── app.py                        # Original Flask backend
+├── requirements.txt              # Python dependencies
+├── chatbot_qa_dataset.json       # MamaBot Q&A training data
+├── chatbot_dialogue_dataset.json # Dialogue-style training data
+├── combined_conversations.json   # Combined dataset
+├── templates/                    # Flask HTML templates
+├── static/                       # CSS, JS, images
+└── .streamlit/
+    └── secrets.toml              # 🔒 Local secrets (not committed)
+```
 
-Usage
+---
 
-Log In: Access the dashboard via the login page. The dashboard displays the user's email or "Guest" if not logged in.
-Find Facilities:
-Click the "Find Nearby Facilities" button to fetch and display medical facilities based on your geolocation.
-View facilities on an interactive Google Map with clickable markers.
+## ⚙️ Setup & Run Locally
 
+**1. Clone the repository**
+```bash
+git clone https://github.com/paradise-007/matru-shishu-suraksha.git
+cd matru-shishu-suraksha
+```
 
-Ask MamaBot:
-Type a question in the textarea and press Enter or click "Send" to get a response.
-Use the voice input button for speech-to-text queries (if supported by the browser).
-Click "Hear Response" to listen to MamaBot's response (if text-to-speech is implemented).
+**2. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
+**3. Add your MongoDB URI** *(optional — app works without it)*
 
-Logout: Click the "Logout" link to end the session.
+Create `.streamlit/secrets.toml`:
+```toml
+MONGO_URI       = "mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/"
+MONGO_DB        = "matru_shishu"
+MONGO_COLLECTION = "chatbot_data"
+```
 
-API Endpoints
+**4. Run the app**
+```bash
+streamlit run streamlit_app.py
+```
+Open `http://localhost:8501` in your browser.
 
-POST /api/chatbot/query: Sends a user query to MamaBot and returns a response.
-Request: { "message": "user question" }
-Response: { "response": "MamaBot answer" } or { "error": "error message" }
+---
 
+## 🩺 Health Topics Covered by MamaBot
 
-GET /api/health/facilities?lat=&lon=: Retrieves nearby medical facilities.
-Response: { "facilities": [{ "name": "Facility Name", "lat": 12.34, "lon": 56.78, "distance": 10.5, "directions_url": "url" }, ...] }
+- Trimester-wise pregnancy nutrition
+- Foods to avoid during pregnancy
+- Warning signs and emergency guidance
+- Signs of labour (true vs. false)
+- Fetal kick counting
+- Vaccination schedules (mother & baby)
+- Breastfeeding and milk supply
+- Newborn care and jaundice
+- Gestational diabetes, anaemia, preeclampsia
+- C-section recovery
+- Postpartum depression support
 
+---
+
+## 🆘 Emergency Contacts (India)
+
+| Service | Number |
+|---|---|
+| 🚑 Ambulance | 108 |
+| 👩 Women Helpline | 181 |
+| 🧒 Child Helpline | 1098 |
+| 💙 Mental Health (iCall) | 9152987821 |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve MamaBot's knowledge base, add regional language support, or expand the facility database:
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "Add: your description"`
+4. Push and open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+**Vishv** — [@paradise-007](https://github.com/paradise-007)
+
+> *"Every mother deserves access to safe, informed healthcare. This project is a small step toward that future."*
+
+---
+
+<div align="center">
+Made with ❤️ for Maternal & Child Healthcare in India
+</div>
